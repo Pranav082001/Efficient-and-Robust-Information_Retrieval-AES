@@ -1,0 +1,6 @@
+<script>start("/Users/pranavk/Desktop/HiWi/RAG/Efficient-and-Robust-Information_Retrieval-AES/local_experiments/OpenKB/");</script>
+<script>onHasParentDirectory();</script>
+<script>addRow("my_kb","my_kb",1,192,"192 B",1778025276,"5/6/26, 1:54:36 AM");</script>
+<script>addRow("Annex_PP_SMGW.pdf","Annex_PP_SMGW.pdf",0,513025,"501 kB",1778024603,"5/6/26, 1:43:23 AM");</script>
+<script>addRow("openkb_demo.ipynb","openkb_demo.ipynb",0,2570,"2.5 kB",1778627171,"5/13/26, 1:06:11 AM");</script>
+<script>addRow("openkb_demo.py","openkb_demo.py",0,1915,"1.9 kB",1778025168,"5/6/26, 1:52:48 AM");</script>
