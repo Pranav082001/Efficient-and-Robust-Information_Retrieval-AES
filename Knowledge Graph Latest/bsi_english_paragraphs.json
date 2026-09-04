@@ -1,0 +1,1425 @@
+[
+ {
+  "title": "SMGW-PP – 1.1 Introduction (Part 1)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "1.1",
+  "section_title": "Introduction",
+  "sentences": [
+   "The renewable energy transition entails a de-centralization of energy production and the need for automated, digitized coordination of generation, storage and consumption of energy.",
+   "An adjustment of the grid towards not only small, de-centralized production plants but also energy storage systems as well as flexible consumption devices is therefore necessary.",
+   "This requires a transformation in particular of low- and medium-voltage networks of the grid to a smart grid, i.e., a commodity network, that intelligently integrates the behaviour and actions of all entities connected to it.",
+   "This efficiently ensures a more sustainable, economic and secure supply of that commodity.",
+   "Entities of the smart grid may be suppliers of natural resources and energy, its consumers and those that are both, as well as energy storage systems.",
+   "The smart grid needs to allow for the flexibility to coordinate consumption and production of its commodity:",
+   "A smart grid has to enable the integration of consumer devices that regulate the load and availability of resources or energy in the grid."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 1.1 Introduction (Part 2)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "1.1",
+  "section_title": "Introduction",
+  "sentences": [
+   "To provide this integration of flexibly controllable production and consumption devices, the smart metering system is essential.",
+   "It measures the consumption or production of certain commodities at the consumers' side and further allows sending this information to external entities as basis for e.g. the billing of consumption or production.",
+   "In addition, it provides the possibility to support the controlling of production and consumption devices.",
+   "Finally, it provides a transparent means of information by providing an interface for consumers and their devices to access data associated with them.",
+   "This protection profile (PP) defines the security objectives and corresponding requirements for a smart meter gateway (SMGW), which is the central communication component of a smart metering system (please refer to chapter Section 1.4.2 for a more detailed overview).",
+   "The PP is directed to developers of SMGWs and contains the requirements that have to be met.",
+   "It is further directed to metering point operators (MPOs) responsible for operating SMGWs."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 1.1 Introduction (Part 3)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "1.1",
+  "section_title": "Introduction",
+  "sentences": [
+   "Note that in addition to the security requirements of this PP, [BSI-TR-03109-1] defines interoperability and functional requirements for SMGWs.",
+   "The target of evaluation (TOE) that is described in this document is an electronic unit comprising hardware and software/firmware1 used for collection, processing, storage and provision of meter data from one or more meters of one or multiple commodities.",
+   "It connects a wide area network (WAN) with a network of devices of one or more meters (local metrological network, LMN) and the home area network (HAN).",
+   "In the HAN, the TOE provides access for consumers and communication with controllable local systems or devices for value-added services (cf. the term CLS in Section 3.1).",
+   "The TOE supports the controlling of such controllable local systems.",
+   "The security functionality of the TOE comprises in particular • the protection of confidentiality, authenticity, integrity of data and • information flow control, mainly to protect the privacy of consumers, to ensure a reliable billing process and to protect the smart metering system and a corresponding large-scale infrastructure of the smart grid.",
+   "The TOE is part of the device SMGW and relies on the functionality of a security module (which is part of the SMGW but not of the TOE) for parts of its security functionality."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 1.1 Introduction (Part 4)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "1.1",
+  "section_title": "Introduction",
+  "sentences": [
+   "For the precise boundary of the TOE see Section 1.4.5 and Section 1.4.6. The availability of the TOE is not addressed by this PP. By the collection, processing and storage of meter data by SMGWs, the decentralized approach as required by [MsbG] is implemented.",
+   "Meter data are sent to external market participants e.g. for billing purposes, but are also made available locally in the HAN to the consumers and their devices as well as to CLS devices.",
+   "SMGWs support controlling of CLS devices in the HAN in the following way:",
+   "As a mandatory functionality, the SMGW provides a TLS proxy functionality between CLS devices in the HAN and external market participants in the WAN.",
+   "This TLS proxy channel may be used to send data from an external market participant to a CLS device.",
+   "The contents of this TLS proxy channel are transparent to the SMGW and may contain control commands.",
+   "In addition, as an optional functionality, control data may be sent by the gateway administrator (GWA) to the TOE, which stores, possibly processes and sends them to CLS devices for further usage."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 1.1 Introduction (Part 5)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "1.1",
+  "section_title": "Introduction",
+  "sentences": [
+   "Infor1 For the rest of this document the term “firmware” will be used. mation on these control data is then available for consumers in the HAN.",
+   "The SMGW may further process control data in combination with meter data to realize further funtionalities.",
+   "If this optional functionality is implemented in the SMGW, the functional package \"power limitation\" as described in Section 7.2 shall be included in the security target (ST).",
+   "SMGWs include a functionality to remove personally identifiable information, thus allowing a de- and re-installation at a different location, and contributing to sustainability.",
+   "The TOE as described in this PP is assumed to be installed behind a grid connection point, and assumed to connect meters as well as CLS devices associated with that grid connection point.",
+   "Optionally, the SMGW may also be installed to connect meters as well as CLS devices from multiple grid connection points within one grid node of the same voltage level.",
+   "If the SMGW is intended for that usage, the functional package \"multiple grid connection points\" as described in [Package_MultipleGcp] shall be included in the security target (ST) of the developer."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 1.4.2 Overview over the SMGW in a smart metering system (Part 1)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "1.4.2",
+  "section_title": "Overview over the SMGW in a smart metering system",
+  "sentences": [
+   "Figure 1.1 provides an overview of the TOE as part of an SMGW with the networks it connects from a purely functional perspective as used in this PP.2 It should be noted that this description purely contains aspects that are relevant to motivate and understand the functionalities of the SMGW as described in this PP. It does not aim to provide a universal description of a smart metering system for all application cases.",
+   "Figure 1.1. The TOE and its direct environment A smart metering system comprises different functional units in the context of the descriptions in this PP:",
+   "• The SMGW (as defined in this PP) serves as the communication component between devices in the LMN and HAN of the consumer (such as meters and added generation plants) and the outside world.",
+   "It can be seen as a kind of firewall dedicated to the smart metering functionality.",
+   "It collects, processes, and stores the records from meter(s) as well as derivatives thereof and ensures that only authorized parties have access to them.",
+   "Before transmitting meter data3 via the WAN interface, the information will be encrypted and signed using the services of a security module.",
+   "Additionally, the SMGW supports the controlling of CLS devices via the TLS proxy functionality."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 1.4.2 Overview over the SMGW in a smart metering system (Part 2)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "1.4.2",
+  "section_title": "Overview over the SMGW in a smart metering system",
+  "sentences": [
+   "Optionally, the SMGW is capable to collect, process, store and forward control data.",
+   "It may receive control data receipts from CLS, as well as internally process and forward the receipts or results, see Section 7.2. Further, the SMGW features a mandatory local interface for authorized consumers to access the data relevant to them.",
+   "It further offers a local interface to service technicians (SRV) for diagnostic purposes.",
+   "Note that the TOE of this PP is part of the SMGW, but the SMGW contains parts that are not included in the TOE, such as the security module, see also Section 1.4.5. • The meter itself records the consumption or production of one or more commodities (e.g., electricity, gas, water, heat) and submits those records in defined intervals to the SMGW.",
+   "These meter data have to be signed and encrypted by the SMGW before transmission to external entities in order to ensure its confidentiality, authenticity, and integrity.",
+   "The meter is comparable to a classical meter4 and has comparable security requirements; it will be sealed as classical meters according to the regulations of the calibration authority.",
+   "The meter further supports the encryption and integrity protection of its connection to the SMGW5."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 1.4.2 Overview over the SMGW in a smart metering system (Part 3)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "1.4.2",
+  "section_title": "Overview over the SMGW in a smart metering system",
+  "sentences": [
+   "Meter is a hypernym for residential meters and industrial meters in the LMN, the difference of those being that data of industrial meters are associated with a legal entity and are not considered personally identifiable information.",
+   "Please note that readings and data that are not relevant for billing may require an explicit endorsement of the consumer.",
+   "In this context, a classical meter denotes a meter without a communication channel, i.e. whose values have to be read out locally.",
+   "It should be noted that this PP does not imply that the connection between the SMGWs and external components (specifically meters and CLS) is cable-based.",
+   "It is also possible that the connections as shown in Figure 1.1 are realized deploying a wireless technology.",
+   "However, the requirements on how the connections shall be secured apply regardless of the realisation.",
+   "Residential meters are only located in the LMN."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 1.4.2 Overview over the SMGW in a smart metering system (Part 4)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "1.4.2",
+  "section_title": "Overview over the SMGW in a smart metering system",
+  "sentences": [
+   "Industrial meters may be located in the LMN or in the HAN.",
+   "However, in the case of being located in the HAN, they do not fall under the hypernym meter and the data generated and sent to the SMGW are not considered meter data.",
+   "Instead, industrial meters in the HAN are considered to be CLS, see below.",
+   "• The SMGW utilizes the services of a security module (e.g., an integrated chip) as a cryptographic service provider and as a secure storage for private keys and possibly further confidential assets.",
+   "The security module is contained in the SMGW but it is not part of the TOE of this PP; it is evaluated separately according to the requirements in the corresponding PP (c.f. [SecMod-PP]).",
+   "CLS (as shown in Figure 1.2) are located in the HAN.",
+   "They may range from local power generation plants, controllable loads such as heat pumps, electronic vehicle chargers or battery storage to applications in home automation."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 1.4.2 Overview over the SMGW in a smart metering system (Part 5)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "1.4.2",
+  "section_title": "Overview over the SMGW in a smart metering system",
+  "sentences": [
+   "In addition, devices for value-added services, such as heat cost allocators, as well as industrial meters in the HAN of the SMGW are summarized under the term CLS for simplicity.",
+   "CLS may utilize the services of the SMGW for communication services, to receive control data from the SMGW or to obtain the legal time-base from the SMGW.",
+   "The following Figure 1.2 introduces the minimum required physical interfaces of the TOE and shows the cardinality of the involved entities.",
+   "6 Figure 1.2. The physical interfaces of the TOE and the cardinality of the involved external entities.",
+   "Please note that the arrows of the physical interfaces as shown in Figure 1.2 indicate the flow of information.",
+   "However, they do not indicate that a communication flow can be initiated bi-directionally.",
+   "Indeed, this PP will place dedicated requirements on the way an information flow can be initiated."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 1.4.2 Overview over the SMGW in a smart metering system (Part 6)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "1.4.2",
+  "section_title": "Overview over the SMGW in a smart metering system",
+  "sentences": [
+   "As Figure 1.2 indicates, the TOE provides at least two physical interfaces HAN-CON and HAN-CLS to the local network referred to as \"HAN\".",
+   "All services of the TOE provided at HAN-CLS are also provided at HANCON and vice-versa.",
+   "Application Note 2:",
+   "A separation of the HAN into two networks HAN-CON and HAN-CLS is not required by this PP. If such a separation is enforced by a TOE, the ST author shall adjust the information in the ST and model this functionality accordingly.",
+   "In case such a separation is provided by the TOE, still all services that are provided in the HAN as described in this PP and in [BSI-TR-03109-1] have to be provided at the TOE's interfaces to both networks.",
+   "The overview of the smart metering system as described before is based on a threat model that has been developed for the smart metering system and that is motivated by the following considerations:",
+   "Note that during the switch of a GWA for a TOE, the cardinality of GWAs interacting with one SMGW may be two for a short period of time."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 1.4.2 Overview over the SMGW in a smart metering system (Part 7)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "1.4.2",
+  "section_title": "Overview over the SMGW in a smart metering system",
+  "sentences": [
+   "However, except for this case, only one GWA exists for a TOE.",
+   "• The SMGW is the central communication unit in the smart metering system.",
+   "It shall be the main unit directly connected to the WAN.",
+   "• The SMGW is the central component that collects, processes, and stores meter data and supports the controlling of CLS devices.",
+   "It is therefore the primary point of user interaction in the context of the smart metering system.",
+   "• To conquer a meter in the LMN, a remote attacker first would have to attack the SMGW successfully.",
+   "All data transferred between LMN and WAN flows via the SMGW, which makes it an ideal unit for implementing significant parts of the system's overall security functionality."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 1.4.2 Overview over the SMGW in a smart metering system (Part 8)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "1.4.2",
+  "section_title": "Overview over the SMGW in a smart metering system",
+  "sentences": [
+   "• To conquer a device in the HAN (a consumer device or a CLS), a remote attacker would either have to attack the SMGW successfully, attack a device in the HAN with a separate connection into another network, or would have to attack the device directly.",
+   "The security of these devices is not part of the evaluation of this PP. However, it is assumed that in particular those devices with a separate connection into another network have an appropriate level of protection.7 • Because an SMGW can be used to connect and protect multiple meters (while a meter will always be connected to exactly one SMGW) and CLS with the WAN, there might be more meters and CLS in a smart metering system than there are SMGWs.",
+   "• The SMGW is located within a physical casing, where the casing itself is also part of the TOE.",
+   "Nevertheless, some physical and logical components within the casing might be non-TOE, as long as those do not realize any kind of security-relevant functionality defined in Chapter 6. In particular, the security module contained within the casing is not part of the TOE.",
+   "• The SMGW as well as the connected meters and CLS lie within the same premises.",
+   "All these arguments motivated the approach to have an SMGW (using a security module for cryptographic support), which is rich in security functionality, strong and evaluated in depth, in contrast to a meter which will only deploy a minimum of security functions.",
+   "The security module will be evaluated separately."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 1.4.2 Overview over the SMGW in a smart metering system (Part 9)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "1.4.2",
+  "section_title": "Overview over the SMGW in a smart metering system",
+  "sentences": [
+   "It should be noted that this PP does not aim to imply any specific system architecture or product design as long as the security requirements from this PP are fulfilled.",
+   "Only in cases where the implementation of the security functional requirements (SFRs) will require a certain architecture, this architecture is described in this PP in a mandatory way.",
+   "To underline this approach, this PP will further refer to the term “unit” whenever the TOE or another part of the smart metering system is described from a functional perspective and only use the term “component” or “device” when a real physical device is described.",
+   "Possible forms of implementing the units of a smart metering system in components are described in Section 1.4.5."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 1.4.5 TOE physical boundary (Part 1)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "1.4.5",
+  "section_title": "TOE physical boundary",
+  "sentences": [
+   "The TOE comprises the hardware and firmware that is relevant for the security functionality of the SMGW as defined in this PP. The security module that is utilized by the TOE is contained in the SMGW, but it is not part of the TOE.",
+   "This PP does not imply any physical architecture for the components that make up the smart metering system.",
+   "The following sections introduce examples of physical representations for the different components of the smart metering system – focusing on the TOE.",
+   "It should be noted that this overview of possible physical implementations does not claim to be complete.",
+   "1.4.5.2 Possible TOE design The following Figure 1.3 provides an example for an implementation of the TOE and its relation to the physical device SMGW as defined in this PP. An SMGW is a device comprising at least:",
+   "• the security relevant parts (i.e., TOE security functionality (TSF)) of the TOE, • a communication adapter8 responsible to provide access to a connected network (may be part of the TOE but shall be part of the physical device), and • the security module that is not part of the TOE.",
+   "Note that [BSI-TR-03109-1] addresses further (non-security-relevant) requirements for the SMGW that have to be adhered to."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 1.4.5 TOE physical boundary (Part 2)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "1.4.5",
+  "section_title": "TOE physical boundary",
+  "sentences": [
+   "The TOE communicates with one or more meters in the LMN, provides an interface to the WAN and provides two physical interfaces HAN-CLS and HAN-CON to the network HAN.",
+   "Figure 1.3. TOE design Please note that this refers to the pure communication services excluding encryption functionality.",
+   "Different layouts may be used concerning the relation between the communication adapter and the TOE, as depicted in Figure 1.3).",
+   "Variant a follows the approach to include the communication services within the logical TOE boundary and hence into the scope of the PP. variant b uses a communication adapter outside the TOE scope to set up a subset or all communication links to WAN, LMN or HAN.",
+   "Hence, the TOE security functionality interfaces (TSFIs) of the SMGW might be at the physical boundary of the casing (in Variant a) or at internal interfaces within the casing (in variant b).",
+   "1.4.5.3 Additional TOE configurations due to second source strategies for hardware components In general, the modification, exchange or removal of an existing component and the inclusion of a new one leads to a new TOE configuration.",
+   "In order to provide the developer with the necessary flexibility in terms of second source and security design strategies, this does not apply to passive components (such as resistors or capacitors)."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 1.4.5 TOE physical boundary (Part 3)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "1.4.5",
+  "section_title": "TOE physical boundary",
+  "sentences": [
+   "However, the modification, exchange, removal or inclusion of all non-passive components (such as CPU, RAM or flash) or directly security-relevant ones (such as the seal) leads to a further TOE configuration.",
+   "This also holds for the security module."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 1.4.6.1 Overview over TOE security features (Part 1)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "1.4.6.1",
+  "section_title": "Overview over TOE security features",
+  "sentences": [
+   "The logical boundary of the TOE can be defined by its security features:",
+   "1. Handling of meter data:",
+   "The collection and processing of meter data, submission to authorized external market participants (e.g., one of the service providers involved), where necessary protected by a digital signature.",
+   "2. Protection of authenticity, integrity and confidentiality of data temporarily or persistently stored in the TOE, transferred locally within the LMN or HAN and transferred in the WAN (between TOE and authorized external entities).",
+   "3. Firewalling of information flows to the WAN and information flow control among meters, CLS and the WAN.",
+   "4. A wake-up-service that allows to contact the TOE from the WAN side.",
+   "5. Privacy preservation."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 1.4.6.1 Overview over TOE security features (Part 2)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "1.4.6.1",
+  "section_title": "Overview over TOE security features",
+  "sentences": [
+   "6. The management of security functionality.",
+   "7. The identification and authentication of TOE users.",
+   "8. A Key generation service for external entities.",
+   "Application Note 3:",
+   "Please note that it is possible that the TOE provides more functionality than required by this PP. However, all additional functionality of the TOE has to be implemented in a way that it cannot impact the security functionality required by this PP. Application Note 4:",
+   "The provision of software updates for meters in the LMN or CLS in the HAN is included implicitly in this PP. Software updates are part of the asset meter config or CLS config, respectively.",
+   "The read access and the management are modelled in the respective SFRs in Chapter 6. If the functionality is implemented in the TOE, the ST author shall describe the functionality of the TOE in the TOE summary specification."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 1.4.6.1 Overview over TOE security features (Part 3)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "1.4.6.1",
+  "section_title": "Overview over TOE security features",
+  "sentences": [
+   "Note that in case this functionality is described and detailed in [BSI-TR-03109-1], the ST author shall model the functionality in this PP consistently with the requirements therein.",
+   "Further information may be provided in accompanying documents to [BSI-TR-03109-1].",
+   "Application Note 5:",
+   "The TOE may support controlling of CLS in two ways.",
+   "Either the control commands are sent via the TLS proxy channel to CLS.",
+   "In this case, the control commands are part of the asset supplementary data, see Section 3.2. Or the control data may be sent by the GWA to the TOE, which stores, possibly processes and then sends them to a CLS.",
+   "In the latter case, the ST author shall model the functionality of the TOE using the functional package defined in Section 7.2. Note that in case this functionality is described and detailed in [BSI-TR-03109-1], the ST author shall model the functionality in this PP consistently with the requirements therein."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 1.4.6.1 Overview over TOE security features (Part 4)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "1.4.6.1",
+  "section_title": "Overview over TOE security features",
+  "sentences": [
+   "Further information may be provided in accompanying documents to [BSI-TR-03109-1].",
+   "The ST author shall add the information concerning this functionality in tion 1.4.3 and in this section as a separate security feature.",
+   "Sec The following sections introduce the security functionality of the TOE in more detail."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 1.4.6.5 Information flow control and connection establishment (Part 1)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "1.4.6.5",
+  "section_title": "Information flow control and connection establishment",
+  "sentences": [
+   "The TOE shall separate devices in the respective networks from each other and shall enforce the following rules for information flow control and connection establishment to control the communication between the networks that the TOE is attached to:",
+   "• information flow is only allowed to and from authorized external entities and via a trusted channel, • information flow of meter data is directed by information in processing profiles, • the TOE can establish connections to devices in the WAN, LMN or HAN, • connection establishment to the TOE initiated by external entities in the WAN shall be denied, • a CLS in the HAN may establish a connection to an external market participant in the WAN via the TOE as proxy12; an external market participant may not establish such a connection themselves, instead, they require the GWA to administer a channel establishment initiated by the TOE to the external market participant as well as to the CLS, • the TOE shall offer a wake-up service that allows the GWA in the WAN to trigger a connection establishment, see Section 1.4.6.6, • TLS endpoints of communication channels from or to the TOE shall exist in the TOE itself and at roles/entities defined in Table 3.1 only, • connections are allowed as defined in communication profiles only, • only cryptographically protected, i.e., encrypted, integrity protected and mutually authenticated, connections are possible.13 This functionality shall:",
+   "• prevent that the TOE itself or the components behind the TOE (i.e., meters or CLS) can be conquered by a remote attacker via the TOE (as defined in Section 3.4), that processed data are transmitted to the wrong external entity, and that processed data are transmitted without being protected according to their specific need, • protect the smart metering system and a corresponding large scale infrastructure in two ways: by preventing that conquered components will send forged meter data (with the aim to cause damage to the smart grid), and by preventing that widely distributed smart metering systems can be abused as a platform for malicious software to attack other systems in the WAN (e.g., a remote attacker who would be able to install a botnet on components of the smart metering system).",
+   "The limitation on communication flows that is enforced by the TOE between parties in the WAN, LMN and HAN is depicted in Table 1.1. Technically, this channel is established by the TOE who acts as a proxy between the CLS and the external entity in the WAN.",
+   "To establish an encrypted channel, the TOE may use the required protocols such as DHCP or PPP.",
+   "Beside the establishment of an encrypted channel, no unprotected communication between the TOE and external entities located in the WAN, LMN or HAN is allowed.",
+   "Note that communication with unidirectionally communicating meters cannot be mutually authenticated; in addition, receiving the SMGW time from the SMGW does not require authentication from the respective external entities in HAN or LMN."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 1.4.6.5 Information flow control and connection establishment (Part 2)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "1.4.6.5",
+  "section_title": "Information flow control and connection establishment",
+  "sentences": [
+   "Destinati WAN on LMN HAN Source WAN Communication within the No connection establishment No connection establishment is allowed.",
+   "WAN is not restricted.",
+   "Howe- is allowed. ver, the TOE is not involved in this communication.",
+   "LMN No connection establishment No communication between is allowed. devices in the LMN is assumed.",
+   "No connection establishment is allowed.",
+   "It is assumed that residential meters in the LMN only communicate with the TOE and are not be connected to any other network; industrial meters in the LMN are assumed to only have additional unidirectional (outbound) connections to other networks.",
+   "HAN No connection establishment No connection establishment Devices in the HAN may communicate with is allowed. is allowed. each other."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 1.4.6.5 Information flow control and connection establishment (Part 3)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "1.4.6.5",
+  "section_title": "Information flow control and connection establishment",
+  "sentences": [
+   "However, the TOE is not involved in this communication.",
+   "If devices in the HAN have a separate connection to parties in the WAN (beside the TOE), this connection is assumed to be appropriately protected.",
+   "Table 1.1 Limitation on communication flows enforced by the TOE between different entities in the WAN, LMN and HAN The TOE itself shall offer the following services to external entities within the various networks:",
+   "1. WAN: a. the TOE shall offer management functionality to the GWA, b. the TOE shall send meter data to external market participants according to the processing profiles, c. the TOE shall offer a wake-up service to the GWA, d. the TOE shall provide the possibility for the GWA to use a wake-up to initiate a TLS proxy channel between an external market participant in the WAN and a CLS in the HAN.",
+   "2. LMN: a. the TOE shall accept the submission of meter data from devices in the LMN, b. the TOE shall offer a key generation service for devices in the LMN, 3. HAN (accessible via the physical interfaces HAN-CON and HAN-CLS): a. the TOE shall provide consumers access to their respective consumer logs and to the management functionality, b. the TOE shall provide SRVs access to the system log and to the management functionality, c. the TOE shall offer a key generation service for CLS, d. the TOE shall provide the SMGW time to devices in the HAN, e. the TOE shall provide the TLS proxy functionality to CLS in the HAN, i.e., the possibility to establish a trusted channel to an external market participant."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 1.4.7 The interfaces of the TOE (Part 1)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "1.4.7",
+  "section_title": "The interfaces of the TOE",
+  "sentences": [
+   "The TOE offers its functionality via a set of external interfaces.",
+   "The TSFIs are located at the logical TOE boundary by definition.",
+   "Table 1.2 provides an overview of the mandatory external interfaces of the TOE and provides additional information.",
+   "Except for HAN-CON and HAN-CLS, all interfaces are separated both physically and logically.",
+   "Interface Name Description HAN-CLS The TOE offers two physical interfaces HAN-CLS and HAN-CON to the HAN.",
+   "All services of the TOE provided at HAN-CLS are also provided at HAN-CON and vice-versa.",
+   "HAN-CON CLS may use the communication services of the TOE and the management functionality they have access to via these interfaces."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 1.4.7 The interfaces of the TOE (Part 2)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "1.4.7",
+  "section_title": "The interfaces of the TOE",
+  "sentences": [
+   "The SRV has the possibility to use these interfaces to review information that is relevant to maintain the TOE and to use the management functionality they have access to.",
+   "Via these interfaces, the TOE provides the consumer with the possibility to review information that is relevant for billing or concerns the privacy of the consumer.",
+   "Specifically, the access to the consumer log is only allowed via these interfaces.",
+   "LMN Interface between the meter and the TOE.",
+   "In particular, the TOE receives meter data via this interface.",
+   "SM The TOE invokes the services of its security module via this interface.",
+   "WAN The TOE submits information to or receives information from authorized GWAs or external market participants via this interface."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 1.4.7 The interfaces of the TOE (Part 3)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "1.4.7",
+  "section_title": "The interfaces of the TOE",
+  "sentences": [
+   "In particular, the GWA accesses the TOE only via this interface.",
+   "Table 1.2 Mandatory TOE external interfaces Application Note 6:",
+   "Please note that the interface to the security module is not considered as TSFI, since the physical representation of this interface shall be protected properly by the TOE casing itself.",
+   "Nevertheless, the interface needs to be described by the developer in order to give the ITSEF the possibility to verify whether the security module is used in accordance with [SecMod-PP].",
+   "Application Note 7:",
+   "Please note that in case the SMGW uses a communication adapter that is not part of the TOE, see Section 1.4.5.2, all security-relevant functionality defined in Chap ter 6 has to be implemented within the TOE itself.",
+   "This also holds true for TLS endpoints."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 1.4.8 The cryptography of the TOE and its security module",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "1.4.8",
+  "section_title": "The cryptography of the TOE and its security module",
+  "sentences": [
+   "Parts of the cryptographic functionality required for the functionality described in Section 1.4.6 shall be provided by a security module.",
+   "The security module provides strong cryptographic functionality, random number generation, secure storage of secrets and supports the authentication of the GWA.",
+   "The security module is a different IT product and not part of the TOE as described in this PP. Nevertheless, it is physically embedded into the SMGW and protected by the same level of physical protection.",
+   "The requirements for the security module are specified in [SecMod-PP].",
+   "The following table provides a more detailed overview on how the cryptographic functions are distributed between the TOE and its security module.",
+   "Aspect TOE Security module Communication with external market participant • encryption Support during TLS-handshake:",
+   "• decryption • key agreement • hashing"
+  ]
+ },
+ {
+  "title": "SMGW-PP – 1.4.8.1 Content data encryption vs. an encrypted channel (Part 1)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "1.4.8.1",
+  "section_title": "Content data encryption vs. an encrypted channel",
+  "sentences": [
+   "The TOE utilizes concepts of the encryption of data on the content level as well as the establishment of a trusted channel to external entities.",
+   "All communication with external entities is enforced to happen via encrypted, integrity protected and mutually authenticated channels.",
+   "Further, in the case that processed meter data are sent to an external market participant via the GWA, these data have to be protected on a content level using CMS (according to [BSI-TR-03109-1]).",
+   "The basic information flow for meter data is as follows:",
+   "1. The meter measures the consumption or production of a certain commodity.",
+   "2. The meter data is prepared for transmission: a.",
+   "If the communication between the meter and the TOE is performed bidirectionally, the meter data is transmitted via an encrypted and mutually authenticated channel to the TOE."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 1.4.8.1 Content data encryption vs. an encrypted channel (Part 2)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "1.4.8.1",
+  "section_title": "Content data encryption vs. an encrypted channel",
+  "sentences": [
+   "Please note that the submission of this information may be triggered by the meter or the TOE. b.",
+   "If a unidirectional communication is performed between the meter and the TOE, the meter data is encrypted using a symmetric algorithm to ensure the authenticity and confidentiality.",
+   "3. The authenticity and integrity of the meter data is verified by the TOE.",
+   "4. If (and only if) authenticity and integrity have been verified successfully, the meter data is further processed by the TOE according to the rules in the processing profile, else the cryptographic information flow will be cancelled.",
+   "5. Depending on the processing profile, the processed meter data is signed using the services of the security module.",
+   "6. If the processed meter data are sent to a final recipient of the data via the GWA, processed meter data is additionally protected using CMS.",
+   "7. The processed meter data is submitted to an authorized external entity in the WAN via an encrypted and mutually authenticated channel.",
+   "It may be sent to the external entity via the GWA."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 1.4.9 TOE life cycle (Part 1)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "1.4.9",
+  "section_title": "TOE life cycle",
+  "sentences": [
+   "The life cycle of the TOE can be separated into the following phases:",
+   "1. Development 2. Production 3. Pre-personalization at the developer's premises (without security module) 4. Pre-personalization and integration of security module 5. Delivery to the MPO 6. Delivery by the MPO to the installation and operational environment 7. Installation and start of operation 8. Personalization 9. Normal operation 10. De-installation For a detailed description of the life cycle phases, see [BSI-TR-03109-1-VIII].",
+   "For the PP, it is important to know that the certified configuration of the TOE will be established after phase “personalization”.",
+   "It has to be ensured that previous phases are performed by trusted personnel in secure environments.",
+   "Since the realization of the phases depends on the specific TOE, it is important that the TOE developer considers and enforces appropriate security measures during the life cycle phases.",
+   "The TOE life cycle will be examined during evaluation of assurance aspect ALC.",
+   "Note that after reception of the TOE by the metering point operator (MPO), the MPO is responsible for the secure delivery of the TOE to the installation and operational environment."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 1.4.9 TOE life cycle (Part 2)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "1.4.9",
+  "section_title": "TOE life cycle",
+  "sentences": [
+   "A de-installation of the TOE not only prior to decommission, but also to re-install it at another location is permitted, that is, a repetition of phases 6-10 (excluding phase 8 as the TOE is already personalized) is permitted.",
+   "For the delivery to the location of re-installation, possibly with storage of the TOE in the MPO's premises, the same requirements as for the first delivery have to be met.",
+   "Prior to a de-installation of a TOE, the user data present on the TOE have to be removed or made inaccessible.",
+   "Therefore, the GWA or SRV have to make use of the user data reset functionality of the TOE beforehand."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 2.1 Conformance statement and CC claims",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "2.1",
+  "section_title": "Conformance statement and CC claims",
+  "sentences": [
+   "This PP requires strict conformance of any PP/ST to this PP. 2.2 CC Conformance Claims This PP has been developed using Revision 1 of CC:2022 [CC:2022].",
+   "This PP is [CC:2022] Part 2 extended due to the use of FPR_CON.1. This PP claims conformance to [CC:2022] Part 3; no extended assurance components have been defined.",
+   "2.3 PP Claim This PP does not claim conformance to any other PP. 2.4 Conformance claim rationale Since this PP does not claim conformance to any PP, this section is not applicable.",
+   "2.5 Package Claim This PP claims an assurance package EAL4 augmented by AVA_VAN.5 and ALC_FLR.2 as defined in [CC:2022] Part 5 for product certification."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 6.3.1 Class FCS: Cryptographic support overview (Part 1)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "6.3.1",
+  "section_title": "Class FCS: Cryptographic support overview",
+  "sentences": [
+   "• Details concerning the TLS protocol v1.2 are modelled in FTP_PRO.3/TLS12.",
+   "FTP_PRO.1/TLS12, FTP_PRO.2/TLS12 and • Details concerning the protocol used for the unidirectional communication with meters based on symmetric encryption are modelled in FTP_PRO.1/SYM, FTP_PRO.2/SYM and FTP_PRO.3/SYM.",
+   "Note that the initial pre-shared key between meter and TOE has to be brought into the TOE before a communication is possible, see OE.Keygen.22 • Details concerning CMS as defined in [BSI-TR-03109-3] are modelled in P_PRO.2/CMS and FTP_PRO.3/CMS.",
+   "FTP_PRO.1/CMS, FT These SFRs provide information on the precise usage of the cryptographic primitives for the respective protocols.",
+   "Application Note 22 If TLS v1.3 is implemented in the TOE, the ST author shall model it using the optional SFRs in Section 6.9.4. If these optional SFRs are used, the operations of the SFRs in this section have to be fulfilled accordingly.",
+   "For the verification of wake-up messages, the TOE provides hashing as modelled in FCS_COP.1/HASH.",
+   "For the encryption and decryption of persistent storage memory, see FCS_COP.1/MEM."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 6.3.1 Class FCS: Cryptographic support overview (Part 2)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "6.3.1",
+  "section_title": "Class FCS: Cryptographic support overview",
+  "sentences": [
+   "The TOE provides a key generation service for devices in the HAN and LMN.",
+   "For the generation of private-public key pairs and corresponding self-signed certificates, this key generation is modelled in FCS_CKM.1/SER VICE.",
+   "The derivation of a pre-shared key shared between TOE and meter is modelled in FCS_CKM.5/CMAC.",
+   "6.3.2 FCS_CKM.1/SERVICE:",
+   "Cryptographic key generation for key distribution to HAN and LMN FCS_CKM.1.1/SERVICE The TSF shall generate cryptographic keys for key distribution to HAN and LMN in accordance with a specified cryptographic key generation algorithm [assignment:"
+  ]
+ },
+ {
+  "title": "SMGW-PP – 3.3 Assumption A.ExternalPrivacy",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "3.3",
+  "section_title": "Assumptions",
+  "sentences": [
+   "A.ExternalPrivacy It is assumed that authorized and authenticated external entities receiving any kind of privacy-relevant data or billing-relevant data and the applications that they operate are trustworthy (in the context of the data that they receive) and do not perform unauthorized analyses of this data with respect to the corresponding consumer(s)."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 3.3 Assumption A.TrustedAdmins",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "3.3",
+  "section_title": "Assumptions",
+  "sentences": [
+   "A.TrustedAdmins It is assumed that the GWA and the SRV are trustworthy and well-trained.",
+   "It is assumed that the GWA or the SRV use the user data reset functionality of the TOE prior to a de- and subsequent re-installation of the TOE.",
+   "If the GWA or the SRV delete calibration log data (except for events logging successful firmware updates) in context of a user data reset, it is assumed that they export the data beforehand and store them outside the TOE to ensure the required availability of said data."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 3.3 Assumption A.PhysicalProtection",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "3.3",
+  "section_title": "Assumptions",
+  "sentences": [
+   "A.PhysicalProtection It is assumed that the TOE and all connected meters are installed at the same grid connection point, • either in a non-public environment within a closed facility with restricted access16, which provides a basic level of physical protection.",
+   "The level of physical protection that is expected to be provided by the environment is the same level of protection that is expected for classical meters that operate according to the regulations of the national calibration authority.",
+   "This protection covers the TOE, the meter(s) that the TOE communicates with, devices in the HAN as well as the communication channel between the TOE and its security module, • or in a public environment within a concealing casing17 which provides a basic level of physical protection for the TOE, including the restriction of direct access to the TOE and mechanisms to detect manipulation.",
+   "This protection covers the TOE, the meters that the TOE communicates with, devices in the HAN as well as the communication channel between the TOE and its security module.",
+   "This may also comprise the premises of the MPO.",
+   "For example distribution cabinets.",
+   "If the TOE is not installed within a closed facility but within a public environment, i.e., the latter case, then it is assumed that the asset PII is neither present on the TOE nor transmitted via the TOE."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 3.3 Assumption A.ExtensionLocalNetwork",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "3.3",
+  "section_title": "Assumptions",
+  "sentences": [
+   "A.ExtensionLocalNetwork It is assumed that the spatial expansion of the networks HAN and LMN is restricted to the premises of the consumer."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 3.3 Assumption A.Profile",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "3.3",
+  "section_title": "Assumptions",
+  "sentences": [
+   "A.Profile The processing profiles and communication profiles that are used when handling data are assumed to be trustworthy and correct."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 3.3 Assumption A.Update",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "3.3",
+  "section_title": "Assumptions",
+  "sentences": [
+   "A.Update It is assumed that firmware updates for the TOE that can be provided by an authorized external entity have undergone a certification process according to this PP before they are issued and can therefore be assumed to be correctly implemented.",
+   "It is further assumed that the external entity that is authorized to provide the firmware update is trustworthy and will not introduce any malware into a firmware update."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 3.3 Assumption A.Network",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "3.3",
+  "section_title": "Assumptions",
+  "sentences": [
+   "A.Network It is assumed that 1. a WAN network connection with a sufficient reliability and bandwidth for the individual situation is available, 2. one or more trustworthy sources for an update of the SMGW time are available in the WAN, 3. residential meters in the LMN communicate exclusively with the TOE and only the TOE is able to decrypt the data sent by the residential meter, 4. industrial meters in the LMN connected to the TOE only have additional unidirectional (outbound) connections to other networks, 5. if devices in the HAN have a separate connection (beside the TOE) to parties in other networks, this connection is appropriately protected, 6. devices connected to the TOE do not provide any kind of network connection between HAN, LMN and WAN, and 7. all wired connections are connected properly to prevent non-reachability of the TOE due to false-connections of WAN and HAN interfaces.",
+   "Note that a certification according to [BSI-TR-03109-5] for devices in the scope of said technical guideline is sufficient for point 5 of this assumption to hold."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 3.3 Assumption A.Keygen",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "3.3",
+  "section_title": "Assumptions",
+  "sentences": [
+   "A.Keygen It is assumed that the shared, meter-individual keys for the communication with meters are generated securely according to [BSI-TR-03109-3] and brought into the TOE in a secure way by the GWA."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 3.3 Assumption A.Delivery",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "3.3",
+  "section_title": "Assumptions",
+  "sentences": [
+   "A.Delivery After the reception of the TOE by the MPO, the MPO is responsible for the secure delivery of the TOE to the installation and operational environment.",
+   "It is assumed that the MPO is trustworthy in context of this delivery and well trained and takes appropriate security measures to ensure protection against undetected manipulation or undetected replacement of the TOE during such a delivery to ensure integrity and authenticity of the TOE.",
+   "This also holds in the case of a de-installation and then re-installation of the TOE at another location.",
+   "Note that adhering to [MSB-LK] is sufficient for MPOs to fulfill this assumption."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 3.3 Assumption A.IndustrialMeterHAN",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "3.3",
+  "section_title": "Assumptions",
+  "sentences": [
+   "A.IndustrialMeterHAN It is assumed that if an industrial meter is connected to the TOE via the HAN, then the industrial meter is the end point of the TLS proxy functionality provided by the TOE."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 3.5 OSP OSP.SM",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "3.5",
+  "section_title": "Organizational Security Policies",
+  "sentences": [
+   "OSP.SM The TOE shall use the services of a certified security module for 1. generation of digital signatures, 2. verification of digital signatures, 3. key agreement for TLS and for content data encryption, 4. key pair generation, 5. random number generation, 6. component authentication via the PACE protocol with negotiation of session keys, 7. secure messaging between TOE and security module, and 8. secure storage of key material for the TOE.",
+   "The security module shall be certified according to [SecMod-PP] and shall be used in accordance with its relevant guidance documentation.",
+   "In particular, the certificate of the security module shall be valid when the TOE is delivered to the operational environment."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 3.5 OSP OSP.Log (Part 1)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "3.5",
+  "section_title": "Organizational Security Policies",
+  "sentences": [
+   "OSP.Log The TOE shall maintain a set of log files as defined in [BSI-TR-03109-1] as follows:",
+   "1. A system log of relevant events in order to allow an authorized GWA to analyze the status of the TOE.",
+   "The TOE shall also analyze the system log automatically for a cumulation of security relevant events.",
+   "2. A consumer log that contains information about the information flows that have been initiated to the WAN and information about the processing profiles causing this information flow as well as the billing-relevant information.",
+   "3. A calibration log (as defined in Section 6.2.1) that provides the GWA with a possibility to review calibration relevant events.",
+   "The TOE shall further limit access to the information in the different log files as follows:",
+   "1. Access to the information in the system log shall only be allowed for an authorized GWA via WAN and an authorized service technician via HAN-CLS or HANCON."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 3.5 OSP OSP.Log (Part 2)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "3.5",
+  "section_title": "Organizational Security Policies",
+  "sentences": [
+   "2. Access to the information in the calibration log shall only be allowed for an authorized GWA via WAN and an authorized service technician via HAN-CLS or HAN-CON.",
+   "3. Access to the information in the consumer log shall only be allowed for an authorized consumer via HAN-CLS or HAN-CON.",
+   "The consumer shall only have access to their own information.",
+   "The system log may overwrite the oldest events in case that the audit trail gets full.",
+   "For the consumer log, the TOE shall ensure that a sufficient number of events is available (in order to allow a consumer to verify an invoice) but may overwrite events older than 15 months in case that the audit trail gets full.",
+   "For the calibration log, the following rules apply:",
+   "Events shall be available for three years counting from the end of the year of generation of said events according to national regulations."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 3.5 OSP OSP.Log (Part 3)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "3.5",
+  "section_title": "Organizational Security Policies",
+  "sentences": [
+   "To ensure this availability, most events may be stored outside the TOE, e.g. if an export of the calibration log data is necessary prior to a TOE reset due to a de-installation of the TOE or if the calibration log storage is full.",
+   "An exeption are certain events listed in [BSI-TR-03109-1], such as events on successful firmware updates, that shall be available on the TOE."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 3.5 OSP OSP.KeyGenService",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "3.5",
+  "section_title": "Organizational Security Policies",
+  "sentences": [
+   "OSP.KeyGenService The TOE shall provide the following key generation services for the respective external entities:",
+   "1. the generation of private-public key pairs and corresponding self-signed certificates for CLS in the HAN and meters in the LMN 2. the generation of pre-shared keys for meters in the LMN"
+  ]
+ },
+ {
+  "title": "SMGW-PP – 3.4 Threat T.DataModificationLocal",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "3.4",
+  "section_title": "Threats",
+  "sentences": [
+   "T.DataModificationLocal:",
+   "A local attacker may try to modify (i.e., alter, insert, replay or redirect) user data (e.g., meter data, CLS config) or TSF data when transmitted between the TOE and external entities.",
+   "The attacker may perform the attack via any interface (LMN, HAN, or WAN).",
+   "When trying to modify meter data, it is the objective of the local attacker to alter billing-relevant information or grid status information.",
+   "When trying to modify the CLS config or meter config, it is the objective of the local attacker to influence the behavior of CLS or meters.",
+   "In order to achieve the modification, the attacker may also try to modify TSF data such as the firmware of the TOE."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 3.4 Threat T.DataModificationWAN",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "3.4",
+  "section_title": "Threats",
+  "sentences": [
+   "T.DataModificationWAN:",
+   "A remote attacker may try to modify (i.e. alter, insert, replay or redirect) user data (e.g., meter data, CLS config) or TSF data (e.g. firmware update) when transmitted between the TOE and an external entity in the WAN.",
+   "When trying to modify TSF data such as a firmware update, the remote attacker tries to circumvent security mechanisms of the TOE or tries to get control over the TOE or a device in the HAN or LMN via the TOE."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 3.4 Threat T.TimeModification",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "3.4",
+  "section_title": "Threats",
+  "sentences": [
+   "T.TimeModification:",
+   "A local attacker or remote attacker may try to alter the SMGW time on the TOE, during the transmission between the external time source and the TOE or during the transmission between the TOE and external entities in the HAN.",
+   "The motivation of the attacker could be for example to change the relation between date/time and measured consumption or production values in the meter data records, e.g. to influence the balance of the next invoice."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 3.4 Threat T.DisclosureWAN",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "3.4",
+  "section_title": "Threats",
+  "sentences": [
+   "T.DisclosureWAN:",
+   "A remote attacker may try to read/disclose confidential information in the user data, e.g., meter data or the CLS config, when transmitted between TOE and external entities in the WAN."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 3.4 Threat T.DisclosureLocal",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "3.4",
+  "section_title": "Threats",
+  "sentences": [
+   "T.DisclosureLocal:",
+   "A local attacker may try to read/disclose confidential information in the user data, e.g., the CLS config, HAN device key pairs or meter key pairs, when transmitted between the TOE and external entities."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 3.4 Threat T.Infrastructure",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "3.4",
+  "section_title": "Threats",
+  "sentences": [
+   "T.Infrastructure:",
+   "A remote attacker may try to obtain control over the TOE or over devices in the HAN or LMN via the TOE to cause damage to external entities, for example by altering user data or TSF data.",
+   "A remote attacker may also try to conquer a CLS in the HAN first in order to remotely attack the TOE from the HAN side."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 3.4 Threat T.ResidualData",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "3.4",
+  "section_title": "Threats",
+  "sentences": [
+   "T.ResidualData:",
+   "A local attacker or a remote attacker may try to read/disclose user data (e.g., meter data) from the TOE which are no longer needed by the TOE."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 3.4 Threat T.ResidentData",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "3.4",
+  "section_title": "Threats",
+  "sentences": [
+   "T.ResidentData:",
+   "A remote attacker or local attacker may try to access (i.e., read, alter, delete) user data or TSF data which they don't have permission to while the information is stored in the TOE.",
+   "While the remote attacker only uses the WAN interface of the TOE, the local attacker may also physically access the TOE."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 3.4 Threat T.Privacy",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "3.4",
+  "section_title": "Threats",
+  "sentences": [
+   "T.Privacy:",
+   "A remote attacker may try to obtain more detailed information from the TOE than actually required to fulfil the tasks defined by its role or the contract with the consumer.",
+   "This includes scenarios in which an external market participant that is primarily authorized to obtain certain information from the TOE tries to obtain more information than permitted, as well as scenarios in which an attacker who is not authorized at all tries to obtain information."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 4.1 Objective O.Firewall",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "4.1",
+  "section_title": "Security objectives for the TOE",
+  "sentences": [
+   "O.Firewall The TOE shall serve as the connection point for external entities and shall provide firewall functionality in order to protect the devices of the LMN and HAN (as long as they use the TOE) and itself against threats from the WAN side.",
+   "The firewall:",
+   "1. shall not allow any connections between the WAN and LMN, WAN and HAN, LMN and HAN, 2. shall allow connections to devices in the WAN established by the TOE, 3. shall allow connections to devices in the LMN established by the TOE or by the meter, 4. shall allow connections to consumers established by the consumer, 5. shall allow connections to CLS established by the TOE or by the CLS, 6. shall allow connections to SRVs established by the SRV, 7. shall provide a wake-up service on the WAN interface to trigger the allowed connection establishments with external entities in the WAN, 8. shall not allow any other services being offered on the WAN interface, 9. shall allow connections between external entities in the WAN and CLS via the TOE established by the TOE or the CLS, 10. shall allow communication flows only if confidentiality-protected and integrity-protected and if endpoints are authenticated."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 4.1 Objective O.SeparateIF",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "4.1",
+  "section_title": "Security objectives for the TOE",
+  "sentences": [
+   "O.SeparateIF The TOE shall have physically separated ports for the WAN, the LMN, the HAN-CON and the HAN-CLS interface."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 4.1 Objective O.ConcealWAN",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "4.1",
+  "section_title": "Security objectives for the TOE",
+  "sentences": [
+   "O.ConcealWAN To protect the privacy of its consumers, the TOE shall conceal the communication with external entities in the WAN in order to ensure that no privacy-relevant information may be obtained by analyzing the frequency, load, size or the absence of external communication."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 4.1 Objective O.Meter",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "4.1",
+  "section_title": "Security objectives for the TOE",
+  "sentences": [
+   "O.Meter The TOE receives or polls information about the consumption or production of different commodities from one or multiple meters in the LMN and is responsible for handling meter data.",
+   "This includes that:",
+   "1. the TOE shall ensure that the communication to the meter(s) in the LMN is established in an GWA-definable interval, or an interval as defined by the meter, or on demand of the TOE, 2. the TOE shall enforce encryption and integrity protection for the communication with the meter, 3. the TOE shall verify the integrity and authenticity of the data received from a meter before handling it further, 4. the TOE shall process the data according to the definition in the corresponding processing profile, 5. the TOE shall encrypt the processed meter data for the final recipient if they are sent via a third party and 6. deliver the encrypted data to authorized external market participants as defined in the corresponding processing profiles facilitating an encrypted channel, 7. if an external market participant cannot be reached, the TOE shall re-try to send the data until a configurable number of unsuccessful retries has been reached, 8. the TOE shall pseudonymize the data for parties that do not need the relation between the processed meter data and the identity of the consumer according to the corresponding processing profiles managed by the GWA only."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 4.1 Objective O.Crypt",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "4.1",
+  "section_title": "Security objectives for the TOE",
+  "sentences": [
+   "O.Crypt The TOE shall provide cryptographic functionality as follows:",
+   "1. authentication, integrity protection and encryption of the communication and data to external entities in the WAN, 2. authentication, integrity protection and encryption of the communication to the meter, 3. authentication, integrity protection and encryption of the communication to the consumer, SRV and CLS, 4. authentication, integrity protection and encryption of the communication for CLS to WAN and/or WAN to CLS connections, 5. replay detection for all communications with external entities, 6. encryption of the persistently stored TSF and user data of the TOE, and 7. generation of a public-private-key pair and a corresponding self-signed certificate for CLS and meters.",
+   "In addition, the TOE shall generate the required keys utilizing the services of its security module18 and ensure that the keys are only used for an acceptable amount of time.",
+   "Further, the TOE shall destroy ephemeral keys if no longer needed, as well as the private keys generated for CLS and meters after deployment."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 4.1 Objective O.Time",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "4.1",
+  "section_title": "Security objectives for the TOE",
+  "sentences": [
+   "O.Time The TOE shall provide reliable time stamps and update its internal clock in regular intervals by retrieving reliable time information from a dedicated reliable source in the WAN."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 4.1 Objective O.Protect",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "4.1",
+  "section_title": "Security objectives for the TOE",
+  "sentences": [
+   "O.Protect The TOE shall implement functionality to protect its security functions against malfunctions and tampering.",
+   "Specifically, the TOE shall Please refer to chapter Section 1.4.8 for an overview on how the cryptographic functions are distributed between the TOE and its security module.",
+   "1. encrypt its TSF and user data as long as it is not in use, 2. overwrite any information that is no longer needed to ensure that it is no longer available via the external interfaces of the TOE, 3. monitor user data and the TSF for integrity errors, 4. have a fail-safe design ensuring that it preserves a secure state when a malfunction occurs, and 5. make any physical manipulation within the scope of the intended environment detectable for the consumer or SRV."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 4.1 Objective O.Management",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "4.1",
+  "section_title": "Security objectives for the TOE",
+  "sentences": [
+   "O.Management The TOE shall only provide authorized GWAs with functions for the management of the security features, with exceptions as follows.",
+   "The following limited functions for the management of the security features are available to the respective external entities when authorized:",
+   "• The authorized SRV may manage WAN communication parameters as well as initiate a self-test, a restart or a reset of the TOE via HAN-CON or HAN-CLS.",
+   "• The authorized consumer may change their own password via HAN-CON or HAN-CLS.",
+   "• The authorized CLS may initiate the establishment of a communication channel with an external market participant.",
+   "Further, the TOE shall implement a secure mechanism to update the firmware of the TOE that ensures that only authorized entities are able to provide updates for the TOE and that only authentic and integrity protected updates are applied."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 4.1 Objective O.Log (Part 1)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "4.1",
+  "section_title": "Security objectives for the TOE",
+  "sentences": [
+   "O.Log The TOE shall maintain a set of log files as defined in [BSI-TR-03109-1] for each external GWA, consumer and/or SRV defined in the TOE and its processing profiles as follows:",
+   "1. A system log of relevant events in order to allow an authorized GWA or an authorized SRV to analyze the status of the TOE.",
+   "The TOE shall also analyze the system log automatically for a cumulation of security relevant events.",
+   "2. A consumer log that contains information about the information flows that have been initiated to the WAN and information about the processing profiles causing these information flows as well as information about the system status (including relevant error messages).",
+   "3. A calibration log that provides the GWA and the SRV with a possibility to review calibration relevant events.",
+   "The TOE shall further limit access to the information in the different log files as follows:",
+   "1. Access to the information in the system log shall only be allowed for an authorized GWA via WAN or for an authorized SRV via HAN-CON or HAN-CLS."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 4.1 Objective O.Log (Part 2)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "4.1",
+  "section_title": "Security objectives for the TOE",
+  "sentences": [
+   "2. Access to the information in the consumer log shall only be allowed for an authorized consumer via the HAN-CON or HAN-CLS interface of the TOE and via a secured (i.e., confidentiality and integrity protected) connection.",
+   "The consumer shall only have access to their own information.",
+   "3. Access to the information in the calibration log shall only be allowed for an authorized GWA via the WAN interface and for an authorized SRV via the HANCON or HAN-CLS interface of the TOE.",
+   "The system log may overwrite the oldest events in case that the audit trail gets full.",
+   "For the consumer log, the TOE shall ensure that a sufficient number of events is available (in order to allow a consumer to verify an invoice) but may overwrite events older than 15 months in case that the audit trail gets full.",
+   "If the audit trail of the calibration log gets full, the TOE shall reversibly stop operation, ignore audited events and inform the GWA.",
+   "The TOE shall allow for a deletion of the data by the GWA and SRV except for events required to remain according to [BSI-TR-03109-1]."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 4.1 Objective O.Access",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "4.1",
+  "section_title": "Security objectives for the TOE",
+  "sentences": [
+   "O.Access The TOE shall control the access of external entities in WAN, HAN or LMN to any information that is sent to, from or via the TOE via its external interfaces.",
+   "Only the SMGW time may be accessed by external entities in HAN and LMN without prior authentication."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 4.1 Objective O.KeyGenService",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "4.1",
+  "section_title": "Security objectives for the TOE",
+  "sentences": [
+   "O.KeyGenService The TOE shall provide the following key generation services for the respective external entities:",
+   "1. the generation of private-public key pairs and corresponding certificates for CLS in the HAN and meters in the LMN and 2. the generation of pre-shared keys for meters in the LMN.",
+   "The authorized CLS or authorized meter may request the generation and delivery of a public-private-key pair and the corresponding self-signed certificate."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 4.2 Objective OE.ExternalPrivacy",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "4.2",
+  "section_title": "Security objectives for the operational environment",
+  "sentences": [
+   "OE.ExternalPrivacy Authorized and authenticated external entities receiving any kind of private or billing-relevant data shall be trustworthy and shall not perform unauthorized analyses of these data with respect to the corresponding consumer(s)."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 4.2 Objective OE.TrustedAdmins",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "4.2",
+  "section_title": "Security objectives for the operational environment",
+  "sentences": [
+   "OE.TrustedAdmins The GWA and the SRV shall be trustworthy and well-trained.",
+   "The GWA and the SRV shall use the user data reset functionality of the TOE prior to a de- and subsequent re-installation of the TOE.",
+   "If the GWA or the SRV delete calibration log data (except for events logging successful firmware updates) in context of a user data reset, it is assumed that they export the data beforehand and store them outside the TOE to ensure the required availability of said data."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 4.2 Objective OE.PhysicalProtection",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "4.2",
+  "section_title": "Security objectives for the operational environment",
+  "sentences": [
+   "OE.PhysicalProtection The TOE and all connected meters shall be installed at the same grid connection point, • in a non-public environment within a closed facility with restricted access that provides a basic level of physical protection.",
+   "This protection shall cover the TOE, the meters that the TOE communicates with, devices in the HAN as well as the communication channel between the TOE and its security module.",
+   "Only authorized individuals may physically access the TOE.",
+   "• or in a public environment within a concealing casing which provides a basic level of physical protection for the TOE, including the restriction of direct access to the TOE and mechanisms to detect manipulation.",
+   "This protection shall cover the TOE, the meters that the TOE communicates with, devices in the HAN as well as the communication channel between the TOE and its security module.",
+   "Only authorized individuals may physically access the TOE.",
+   "If the TOE is not installed within a closed facility but within a public environment, i.e., the latter case, then the asset PII shall neither be present on the TOE nor transmitted via the TOE."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 4.2 Objective OE.ExtensionLocalNetwork",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "4.2",
+  "section_title": "Security objectives for the operational environment",
+  "sentences": [
+   "OE.ExtensionLocalNetwork The spatial expansion of the networks HAN and LMN shall be restricted to the premises of the consumer."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 4.2 Objective OE.Profile",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "4.2",
+  "section_title": "Security objectives for the operational environment",
+  "sentences": [
+   "OE.Profile The processing profiles and communication profiles that are used when handling data shall be obtained from a trustworthy and reliable source only."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 4.2 Objective OE.SM",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "4.2",
+  "section_title": "Security objectives for the operational environment",
+  "sentences": [
+   "OE.SM The environment shall provide the services of a certified security module for:",
+   "1. verification of digital signatures, 2. generation of digital signatures, 3. key agreement, 4. key transport, 5. key storage, and 6. random number generation.",
+   "The security module used shall be certified according to [SecMod-PP] and shall be used in accordance with its relevant guidance documentation.",
+   "In particular, the certificate of the security module shall be valid when the TOE is delivered to the operational environment."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 4.2 Objective OE.Update",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "4.2",
+  "section_title": "Security objectives for the operational environment",
+  "sentences": [
+   "OE.Update The firmware updates for the TOE that can be provided by an authorized external entity shall undergo a certification process according to this PP before they are issued to show that the update is implemented correctly.",
+   "The external entity that is authorized to provide the update shall be trustworthy and ensure that no malware is introduced via a firmware update."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 4.2 Objective OE.Network",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "4.2",
+  "section_title": "Security objectives for the operational environment",
+  "sentences": [
+   "OE.Network It shall be ensured that 1. a WAN network connection with a sufficient reliability and bandwidth for the individual situation is available, 2. one or more trustworthy sources for an update of the system time are available in the WAN, 3. residential meters in the LMN do communicate exclusively with the TOE and only the TOE is able to decrypt the data sent by the residential meter, 4. industrial meters in the LMN connected to the TOE only have additional unidirectional (outbound) connections to other networks, 5. if devices in the HAN have a separate connection (beside the TOE) to parties in other networks, this connection is appropriately protected, 6. devices connected to the TOE do not provide any kind of network connection between HAN, LMN and WAN, and 7. all wired connections are connected properly to ensure the correct operation.",
+   "Note that a certification according to [BSI-TR-03109-5] for devices in the scope of said technical guideline is sufficient for point 5 of this security objective to be satisfied."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 4.2 Objective OE.Keygen",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "4.2",
+  "section_title": "Security objectives for the operational environment",
+  "sentences": [
+   "OE.Keygen It shall be ensured that the shared, meter-individual keys for the communication with meters are generated securely according to [BSI-TR-03109-3] and brought into the TOE in a secure way by the GWA."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 4.2 Objective OE.Delivery",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "4.2",
+  "section_title": "Security objectives for the operational environment",
+  "sentences": [
+   "OE.Delivery After the reception of the TOE by the MPO, the MPO is responsible for the secure delivery of the TOE to the installation and operational environment.",
+   "The MPO shall be trustworthy in context of this delivery and well trained and shall take appropriate security measures to ensure protection against undetected manipulation or un- detected replacement of the TOE during such a delivery to ensure integrity and authenticity of the TOE.",
+   "This also holds in the case of a de-installation and then re-installation of the TOE at another location.",
+   "Note that adhering to [MSB-LK] is sufficient for MPOs to fulfill this security objective."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 4.2 Objective OE.IndustrialMeterHAN",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "4.2",
+  "section_title": "Security objectives for the operational environment",
+  "sentences": [
+   "OE.IndustrialMeterHAN It shall be ensured that if an industrial meter is connected to the TOE via the HAN, then the industrial meter is the end point of the TLS proxy functionality provided by the TOE."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 3.1 External entities — roles (Part 1)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "3.1",
+  "section_title": "External entities",
+  "sentences": [
+   "The Consumer (CON) is the authorized natural person or legal entity the meter data are associated with; the consumer may interact with the TOE at the HAN-CON or HAN-CLS interface.",
+   "The Gateway administrator (GWA) is the authority that configures, monitors, and controls the TOE via the WAN interface.",
+   "The Service technician (SRV) is the authorized individual that may interact with the TOE at its HAN-CON or HAN-CLS interface for diagnostic and maintenance purposes; in terms of managing the TOE the SRV can be considered as the local extension of the GWA and has limited access to management functionality."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 3.1 External entities — roles (Part 2)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "3.1",
+  "section_title": "External entities",
+  "sentences": [
+   "The External market participant is an external entity configured by the GWA with corresponding profiles in the TOE and connected via WAN that might receive meter data or control CLS devices connected to the TOE.",
+   "The Meter is a device connected to the TOE via the LMN interface to measure and report meter data; it is a hypernym for residential and industrial meters in the LMN.",
+   "The CLS is an external entity connected to the TOE via the HAN-CON or HAN-CLS interface that uses the TOE for dedicated communication purposes.",
+   "The Metering point operator (MPO) is the entity responsible for parts of the delivery and for the installation of the TOE."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 3.2 Assets — meter data, logs and time",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "3.2",
+  "section_title": "Assets",
+  "sentences": [
+   "Meter data are meter readings that allow calculation of the quantity of a commodity consumed over a period; meter data need integrity and authenticity as well as confidentiality, and are user data.",
+   "System log data need integrity and confidentiality and are TSF data.",
+   "Consumer log data need integrity and confidentiality and are user data.",
+   "Calibration log data need integrity and confidentiality and are TSF data.",
+   "SMGW time is the date and time of the real-time clock of the TOE; it needs integrity and, when adjusted to an external reference time, authenticity, and is TSF data."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 3.2 Assets — keys, profiles and PII",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "3.2",
+  "section_title": "Assets",
+  "sentences": [
+   "Personally identifiable information (PII) is information that can be used to uniquely identify, contact or locate a natural person; it needs confidentiality and is user data.",
+   "The HAN device key pair and the Meter key pair contain the private-public key pair generated by the TOE for a device's asymmetric cryptography; both need integrity and authenticity, and confidentiality only for the private key.",
+   "The Meter symmetric key is a symmetric key for unidirectional communication with meters in the LMN and needs integrity, authenticity and confidentiality.",
+   "The Memory encryption key is a symmetric key used by the TOE to secure its persistent memory and needs integrity and authenticity.",
+   "The Consumer password hash is the hash of the consumer password, needs integrity and authenticity, and is TSF data.",
+   "A Processing profile determines which data shall be sent to which external entity and by whom the data may be accessed; it needs integrity, authenticity and confidentiality and is TSF data."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 3.4 Threats — attacker model (Part 1)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "3.4",
+  "section_title": "Threats",
+  "sentences": [
+   "3.4 Threats The following sections identify the threats that are posed against the assets handled by the TOE of smart metering systems.",
+   "Those threats are the result of a threat model that has been developed for the whole smart metering system first and then has been focused on the threats against the TOE.",
+   "It should be noted that the threats in the following paragraphs consider two different kinds of attackers:",
+   "• Local attacker:",
+   "An attacker that has • physical access to meter, TOE, a connection between these components, or • local logical access, including access to wireless connections, to any of the interfaces, who tries to disclose or alter assets while stored in the TOE or while transmitted between external entities and the TOE.",
+   "Considering the limited value of information processed by a single TOE (resulting in a lower attack motivation in comparison to remote attacks on a large number of TOEs), the necessity for easy access to the consumer's data and the basic physical protection of the consumer premises (cf. A.PhysicalProtection), the following threat model assumes for the vulnerability assessment, that local attackers have laymen expertise and use standard equipment only.",
+   "However, the preparation of local attacks in terms of developing the attack path incl. tools can be performed by attackers with full AVA_VAN.5 attack potential (e.g., expert expertise), as long as their execution is possible with the restrictions for local attackers mentioned above."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 3.4 Threats — attacker model (Part 2)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "3.4",
+  "section_title": "Threats",
+  "sentences": [
+   "Additionally, all drilling, cutting and milling attacks to permanently visible surfaces of the physical device (which can be inspected by consumers and/or SRVs) can be neglected in the considerations of identifying attack paths during AVA_VAN, since attacks to the TOE case are supposed to be detected during an inspection.",
+   "Therefore, the application of any kind of stickers to the TOE case is forbidden, except the seal for the casing acc. to FPT_PHP.1. All surfaces, which are not visible permanently, on the other hand, shall be evaluated during AVA aspects for potential vulnerabilities (e.g. non-bypassibility).",
+   "Please note that the local attacker includes authorized entities like consumers.",
+   "• Remote attacker:",
+   "An attacker that is located in the WAN and who tries to compromise the confidentiality, authenticity and/or integrity of the processed meter data and or configuration data transmitted via the WAN, or who tries to conquer a component of the infrastructure (i.e., meter, TOE or CLS) via the WAN to cause damage to a component itself or to the corresponding grid (e.g., by sending forged meter data to an external market participant).",
+   "Please note that the remote attacker includes entities like external market participants."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 4.3.2.1 Rationale — general objectives",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "4.3.2",
+  "section_title": "Countering the threats",
+  "sentences": [
+   "4.3.2.1 General objectives The security objectives O.Protect, O.Management and OE.TrustedAdmins contribute to counter each threat and contribute to each OSP.",
+   "O.Management is indispensable as it defines the requirements around the management of the Security Functions.",
+   "Without a secure management no TOE can be secure.",
+   "Also OE.TrustedAdmins contributes to this aspect as it provides the requirements on the availability of a trustworthy GWA and SRV.",
+   "O.Protect is present to ensure that all security functions are working as specified.",
+   "Those general objectives will not be addressed in detail in the following paragraphs."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 4.3.2 Countering T.DataModificationLocal",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "4.3.2",
+  "section_title": "Countering the threats",
+  "sentences": [
+   "The threat T.DataModificationLocal is countered by a combination of the security objectives O.Meter, O.Crypt and OE.PhysicalProtection.",
+   "O.Meter defines that the TOE will enforce the encryption of communication when receiving meter data from the meter.",
+   "O.Crypt defines the required cryptographic functionality.",
+   "The encryption of the persistent memory according to O.Crypt supports the protection of the TOE against local attacks.",
+   "The objectives together ensure that the communication between the TOE and external entities cannot be modified or released.",
+   "OE.PhysicalProtection is of relevance as it ensures that access to the TOE is limited."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 4.3.2 Countering T.DataModificationWAN",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "4.3.2",
+  "section_title": "Countering the threats",
+  "sentences": [
+   "The threat T.DataModificationWAN is countered by a combination of the security objectives O.Firewall and O.Crypt.",
+   "O.Firewall defines the connections for the devices within the LMN and HAN to external entities within the WAN and shall provide firewall functionality in order to protect the devices of the LMN and HAN (as long as they use the TOE) and itself against threats from the WAN side.",
+   "O.Crypt defines the required cryptographic functionality.",
+   "Both objectives together ensure that the data transmitted between the TOE and the WAN cannot be modified by a remote attacker."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 4.3.2 Countering T.TimeModification",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "4.3.2",
+  "section_title": "Countering the threats",
+  "sentences": [
+   "The threat T.TimeModification is countered by a combination of the security objectives O.Time, O.Crypt and OE.PhysicalProtection.",
+   "O.Time defines that the TOE needs a reliable time stamp mechanism that is also updated from reliable sources regularly in the WAN.",
+   "O.Crypt defines the required cryptographic functionality for the communication to external entities.",
+   "Therewith, O.Time and O.Crypt are the core objective to counter the threat T.TimeModification.",
+   "OE.PhysicalProtection is of relevance as it ensures that access to the TOE is limited."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 4.3.2 Countering T.DisclosureWAN",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "4.3.2",
+  "section_title": "Countering the threats",
+  "sentences": [
+   "The threat T.DisclosureWAN is countered by a combination of the security objectives O.Firewall.",
+   "O.ConcealWAN and O.Crypt.",
+   "O.Firewall defines the connections for the devices within the LMN and HAN to external entities within the WAN and shall provide firewall functionality in order to protect the devices of the LMN and HAN (as long as they use the TOE) and itself against threats from the WAN side.",
+   "O.Crypt defines the required cryptographic functionality.",
+   "Both objectives together ensure that the communication between the meter and the TOE cannot be disclosed.",
+   "O.ConcealWAN ensures that no information can be disclosed based on additional characteristics of the communication like frequency, load or the absence of a communication."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 4.3.2 Countering T.DisclosureLocal",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "4.3.2",
+  "section_title": "Countering the threats",
+  "sentences": [
+   "The threat T.DisclosureLocal is countered by a combination of the security objectives O.Meter, O.Crypt and OE.PhysicalProtection.",
+   "O.Meter defines that the TOE will enforce the encryption and integrity protection of communication when polling or receiving meter data from the meter.",
+   "O.Crypt defines the required cryptographic functionality.The encryption of the persistent memory according to O.Crypt supports the protection of the TOE against local attacks.",
+   "Both objectives together ensure that the communication between the TOE and external entities cannot be disclosed.",
+   "OE.PhysicalProtection is of relevance as it ensures that access to the TOE is limited."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 4.3.2 Countering T.Infrastructure",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "4.3.2",
+  "section_title": "Countering the threats",
+  "sentences": [
+   "The threat T.Infrastructure is countered by a combination of the security objectives O.Firewall, O.SeparateIF, O.Meter and O.Crypt.",
+   "O.Firewall is the core objective that counters this threat.",
+   "It ensures that all communication flows to the WAN are initiated by the TOE.",
+   "The fact that the TOE does not offer any services to the WAN side and will not react to any requests (except the wake-up call) from the WAN is a significant aspect in countering this threat.",
+   "Further the TOE will only communicate using encrypted channels to authenticated and trustworthy parties which mitigates the possibility that an attacker could try to hijack a communication.",
+   "O.Meter defines that the TOE will enforce the encryption and integrity protection for the communication with the meter.",
+   "O.SeparateIF facilitates the disjunction of the WAN from the LMN.",
+   "O.Crypt supports the mitigation of this threat by providing the required cryptographic primitives."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 4.3.2 Countering T.ResidualData",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "4.3.2",
+  "section_title": "Countering the threats",
+  "sentences": [
+   "The threat T.ResidualData is mitigated by the security objective O.Protect as this security objective defines that the TOE shall delete information as soon as it is no longer used.",
+   "Assuming that a TOE follows this requirement, an attacker cannot read out any residual information as it does simply not exist."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 4.3.2 Countering T.ResidentData",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "4.3.2",
+  "section_title": "Countering the threats",
+  "sentences": [
+   "The threat T.ResidentData is countered by a combination of the security objectives O.Access, O.Firewall, O.Protect and O.Crypt.",
+   "Further, the environment (OE.PhysicalProtection and OE.TrustedAdmins) contributes to this.",
+   "O.Access defines that the TOE shall control the access of users to information via the external interfaces.",
+   "The aspect of a local attacker with physical access to the TOE is covered by a combination of O.Protect (defining the detection of physical manipulation) and O.Crypt (requiring the encryption of persistently stored TSF and user data of the TOE).",
+   "In addition the physical protection provided by the environment (OE.PhysicalProtection) and the SRV (OE.TrustedAdmins) who could realize a physical manipulation contribute to counter this threat.",
+   "The aspect of a remote attacker is covered by O.Firewall as this objective ensures that an adequate level of protection is realized against attacks from the WAN side."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 4.3.2 Countering T.Privacy",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "4.3.2",
+  "section_title": "Countering the threats",
+  "sentences": [
+   "The threat T.Privacy is primarily addressed by the security objectives O.Meter, O.Crypt and O.Firewall as these objective ensures that the TOE will only distribute meter data to external market participants in the WAN as defined in the corresponding processing profiles and that the data will be protected for the transfer.",
+   "OE.Profile is present to ensure that the processing profiles are obtained from a trustworthy and reliable source only.",
+   "O.Access defines that the TOE shall control the access of users to information via the external interfaces.",
+   "Finally, O.ConcealWAN ensures that an attacker cannot obtain the relevant information for this threat by observing external characteristics of the information flow."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 4.3.3.1 Coverage of OSP.SM",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "4.3.3",
+  "section_title": "Coverage of OSPs",
+  "sentences": [
+   "4.3.3.1 OSP.SM The organizational security policy OSP.SM that mandates that the TOE utilizes the services of a certified security module is directly addressed by the security objectives OE.SM and O.Crypt.",
+   "The objective OE.SM addresses the functions that the security module shall be utilized for as defined in OSP.SM and also requires a certified security module.",
+   "O.Crypt defines the cryptographic functionalities for the TOE itself.",
+   "In this context it has to be ensured that the security module is operated in accordance with its guidance documentation."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 4.3.3.2 Coverage of OSP.Log",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "4.3.3",
+  "section_title": "Coverage of OSPs",
+  "sentences": [
+   "4.3.3.2 OSP.Log The organizational security policy OSP.Log that mandates that the TOE maintains an audit log is directly addressed by the security objective for the TOE O.Log.",
+   "O.Access contributes to the implementation of the OSP as it defines that also GWAs are not allowed to read/modify all data.",
+   "This is of specific importance to ensure the confidentiality and integrity of the log data as is required by the OSP.Log."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 6.3.1 Cryptographic primitives of TOE vs security module",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "6.3",
+  "section_title": "Class FCS: Cryptographic support",
+  "sentences": [
+   "cryptographic primitives provided by the TOE are modeled via SFRs in this section.",
+   "The cryptographic primitives provided by the security module are ECDSA for signature generation and verification, ECKA-DH and ECKA-EG for key agreement as well as the generation of random numbers.",
+   "The security module further provides secure storage for keys.",
+   "To link the cryptographic primitives of the TOE to the protocols used for secure communication with external entities, FTP_PRO is used:"
+  ]
+ },
+ {
+  "title": "SMGW-PP – 7.2.2 Functional package Power limitation — overview (Part 1)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "7.2",
+  "section_title": "Functional package: Power limitation",
+  "sentences": [
+   "7.2.2 Package overview This functional package shall be used if the TOE supports controlling of CLS directly in the following way:",
+   "For a CLS, the GWA configures a controlling profile on the TOE.",
+   "This controlling profile contains information such as • the CLS identification, • external entities associated with the CLS, • information on the kind of commands sent to the CLS for controlling.",
+   "In particular, the controlling profile describes for the TOE how to process control data.",
+   "Containing e.g. limits on power consumption or production, these control data are sent from the GWA to the TOE, which stores them, possibly processes them, and allows for CLS to read these control data.",
+   "In addition, notifications of CLS about the reception of such control data may be received, possibly processed, and stored by the TOE.",
+   "The TOE may provide signatures for these notifications, using the functionality of the security module."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 7.2.2 Functional package Power limitation — overview (Part 2)",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "7.2",
+  "section_title": "Functional package: Power limitation",
+  "sentences": [
+   "These notifications may be sent by the TOE to the GWA or an external market participant.",
+   "This functional package covers e.g. the use cases of • limitation of power consumption, • limitation of power production, • monitoring, but is not limited to these use cases.",
+   "The threat model in Chapter 3 does not cover these data, their need for protection or threats against them.",
+   "Therefore, the following section describes a security problem definition for these use cases.",
+   "This security problem definition adds to the security problem definition of the base PP, and that this functional package shall only be used in combination with the base PP. Application Note 83:",
+   "Note that in case this functionality is described and detailed in [BSI-TR-03109-1], the ST author shall model the functionality in this PP consistently with the requirements therein.",
+   "Further information may be provided in accompanying documents to [BSI-TR-03109-1].",
+   "The ST author shall then also add the information concerning this functionality in Section 1.4.3 as well as in Section 1.4.6 as a separate security feature."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 7.2.3 Power limitation — added assets",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "7.2.3",
+  "section_title": "Power limitation: security problem",
+  "sentences": [
+   "If this functional package is chosen, three assets are added to Table 3.2. The Controlling profile is associated with a CLS and contains information and commands to control that CLS, including information on external entities associated with the CLS; it is TSF data needing integrity and authenticity.",
+   "Control data contains information and commands to control CLS such as limits on power consumption or power production; it is user data needing integrity and authenticity.",
+   "Control data receipt contains information about the acknowledgement and reception of control data by a CLS and may contain monitoring information; it is user data needing integrity and authenticity."
+  ]
+ },
+ {
+  "title": "SMGW-PP – 7.2.3 Power limitation — assumption and threat",
+  "doc_id": "SMGW-PP",
+  "doc_title": "Protection Profile for a Smart Meter Gateway (BSI-CC-PP-0073-V2)",
+  "section": "7.2.3",
+  "section_title": "Power limitation: security problem",
+  "sentences": [
+   "The assumption A.ControllingProfile states that the controlling profiles used when handling data are assumed to be trustworthy and correct.",
+   "The threat T.ModificationControlling states that a local or remote attacker may try to modify (i.e., alter, delete, insert, replay or redirect) controlling profiles, control data or control data receipts on the TOE or during transmission between the TOE and an external entity.",
+   "By adding these assets, all threats addressing user data and/or TSF data include the respective assets of this package as a target."
+  ]
+ }
+]

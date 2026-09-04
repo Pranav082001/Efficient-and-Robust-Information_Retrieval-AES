@@ -1,0 +1,2010 @@
+[
+ {
+  "title": "BSI-CS 047 – Einleitung (Teil 1)",
+  "doc_id": "BSI-CS 047",
+  "doc_title": "Absicherungsmöglichkeiten beim Einsatz von Web-Browsern",
+  "section": null,
+  "section_title": "Einleitung",
+  "sentences": [
+   "Das World Wide Web (WWW) ermöglicht die Nutzung vieler, heute nicht mehr wegzudenkender Internet-Dienste.",
+   "Neben den klassischen Web-Angeboten sind viele andere Internet-Dienste, wie E-Mail, Messaging, Video- und Audiostreaming, Online-Spiele oder auch Kollaborationswerkzeuge, in das WWW integriert.",
+   "Zur Anzeige von Webseiten und der Interaktion mit dem Nutzer wird ein Web-Browser benötigt.",
+   "Daher ist auch der Schutz vor Cyber-Angriffen wesentlich von der Sicherheit des Web-Browsers abhängig.",
+   "Insbesondere durch aktive Inhalte können Angreifer Schwachstellen ausnutzen.",
+   "Die Konsequenzen für den Benutzer reichen vom Zugriff auf private Daten bis hin zur Übernahme der Kontrolle über das IT-System.",
+   "Dieses Dokument gibt daher Empfehlungen zur sicheren Nutzung von Web-Browsern."
+  ]
+ },
+ {
+  "title": "BSI-CS 047 – Einleitung (Teil 2)",
+  "doc_id": "BSI-CS 047",
+  "doc_title": "Absicherungsmöglichkeiten beim Einsatz von Web-Browsern",
+  "section": null,
+  "section_title": "Einleitung",
+  "sentences": [
+   "Die Empfehlungen richten sich an IT-Führungs- und IT-Fachkräfte in Unternehmen und Behörden, die mit den Grundkonzepten des World Wide Web und von Betriebssystemen bereits vertraut sind."
+  ]
+ },
+ {
+  "title": "BSI-CS 047 – 1 Grundanforderungen (Teil 1)",
+  "doc_id": "BSI-CS 047",
+  "doc_title": "Absicherungsmöglichkeiten beim Einsatz von Web-Browsern",
+  "section": "1",
+  "section_title": "Grundanforderungen",
+  "sentences": [
+   "Die Grundfunktion eines Web-Browsers ist das Holen angeforderter Daten von Web-Servern und deren Darstellung auf dem Bildschirm.",
+   "Dabei werden die Inhalte durch den Web-Browser selbst oder durch Erweiterungskomponenten (sog. Plugins) interpretiert.",
+   "Da Schwachstellen in Web-Browsern und ihren Erweiterungskomponenten nahezu ausschließlich durch aktive Inhalte ausgenutzt werden können, stellen diese damit die größte Gefahr für die sichere Nutzung von Web-Browsern dar.",
+   "Dennoch können aktive Inhalte zumeist nicht einfach abgeschaltet werden, weil diese häufig von Web-Diensten benötigt werden.",
+   "Bei der sicheren Nutzung von Web-Browsern muss daher sowohl die Nutzbarkeit von Web-Diensten als auch die Absicherung vor der Ausnutzung von Schwachstellen in Web-Browsern berücksichtigt werden.",
+   "Die Grundvoraussetzung für sichere Konfigurationen stellt die Verwendung eines nach aktuellem Stand der Technik möglichst sicheren Web-Browsers dar.",
+   "Neben einem aktuellen Patch-Stand sollte dieser insbesondere die Ausführung von aktiven Inhalten so kapseln, dass selbst bei Ausnutzung von Schwachstellen der Zugriff auf das IT-System des Nutzers verwehrt bleibt."
+  ]
+ },
+ {
+  "title": "BSI-CS 047 – 1 Grundanforderungen (Teil 2)",
+  "doc_id": "BSI-CS 047",
+  "doc_title": "Absicherungsmöglichkeiten beim Einsatz von Web-Browsern",
+  "section": "1",
+  "section_title": "Grundanforderungen",
+  "sentences": [
+   "Die Kapselung darf sich dabei nicht nur auf den Web-Browser selbst beschränken, sondern sollte zudem die Erweiterungskomponenten miteinbeziehen.",
+   "Darüber hinaus sind auch das schnelle Schließen von Schwachstellen und die Verteilung von Updates durch den Hersteller insbesondere dahin gehend wichtig, dass öffentlich bekannt gewordene Schwachstellen nicht ausgenutzt werden können.",
+   "Außerdem sollten die Ausführung aktiver Inhalte und das Browser-Verhalten möglichst fein-granular konfigurierbar sein.",
+   "Um die sichere Web-Nutzung auch bei nicht geschlossenen kritischen Schwachstellen in einem spezifischen Web-Browser zu ermöglichen, sollte grundsätzlich ein weiterer alternativer Web-Browser genutzt werden können.",
+   "Zur Umsetzung dieser Anforderung sind daher stets zwei Web-Browser für den Betrieb auf den IT-Systemen der Nutzer unmittelbar einsatzbereit vorzuhalten (Zwei-Browser-Strategie), auch wenn regelmäßig nur einer dieser beiden Browser genutzt wird."
+  ]
+ },
+ {
+  "title": "BSI-CS 047 – 2 Implementierungsmöglichkeiten",
+  "doc_id": "BSI-CS 047",
+  "doc_title": "Absicherungsmöglichkeiten beim Einsatz von Web-Browsern",
+  "section": "2",
+  "section_title": "Implementierungsmöglichkeiten",
+  "sentences": [
+   "Die Möglichkeiten zur sicheren Nutzung von Web-Browsern gehen von einer Grundkonfiguration aus, bei welcher der Web-Browser direkt auf dem IT-System des Nutzers installiert ist.",
+   "Darüber hinaus werden Separierungsmöglichkeiten für Anwendungen diskutiert, mit deren Hilfe sich die Sicherheit der Nutzung des Web-Browsers weiter erhöhen lässt."
+  ]
+ },
+ {
+  "title": "BSI-CS 047 – 3 Direkte Installation",
+  "doc_id": "BSI-CS 047",
+  "doc_title": "Absicherungsmöglichkeiten beim Einsatz von Web-Browsern",
+  "section": "3",
+  "section_title": "Direkte Installation",
+  "sentences": [
+   "Die direkte Installation eines Web-Browsers auf dem IT-System des Nutzers hat den Vorteil, dass der Funktionsumfang des Browsers nicht eingeschränkt wird.",
+   "Außerdem kann der Browser vollständig die Funktionen des Betriebssystems nutzen, sodass die Aktualisierung von Software-Komponenten unterstützt und die Administration der Konfiguration erleichtert wird.",
+   "Sollten in einer Unternehmensumgebung allerdings mehrere Betriebssysteme verwendet werden, müssen demnach auch mehrere Konfigurationen gepflegt werden.",
+   "Bei der erfolgreichen Ausnutzung einer Schwachstelle ist das IT-System des Nutzers direkt betroffen, sodass sich Schadsoftware auch dauerhaft (persistent) auf dem System installieren kann."
+  ]
+ },
+ {
+  "title": "BSI-CS 047 – 3.1 Anwendungsvirtualisierung",
+  "doc_id": "BSI-CS 047",
+  "doc_title": "Absicherungsmöglichkeiten beim Einsatz von Web-Browsern",
+  "section": "3.1",
+  "section_title": "Anwendungsvirtualisierung",
+  "sentences": [
+   "Virtualisierte Anwendungen laufen in einer virtuellen Umgebung innerhalb des Betriebssystems ab, in der alle Dateien und Komponenten enthalten sind, die das Programm zur Ausführung benötigt.",
+   "Hierzu muss die virtualisierte Anwendung zu einer speziellen Konfiguration zusammengefasst werden, die zur Laufzeit die virtuelle Umgebung im Betriebssystem des Nutzers erzeugt.",
+   "Im Wesentlichen werden hierbei Systemaufrufe durch die virtuelle Umgebung abgefangen, interpretiert und nach festgelegten Regeln an das Betriebssystem weitergegeben.",
+   "Ohne große Einschränkung der Benutzbarkeit wird das IT-System des Nutzers durch die virtuelle Umgebung sowohl vor einer Kompromittierung als auch vor einer Persistenz von Angriffen geschützt, da Schadsoftware selbst bei einer Ausnutzung einer Schwachstelle nicht in direktem Kontakt mit dem Betriebssystem steht.",
+   "Allerdings erfordert jede Aktualisierung des Web-Browsers oder seiner Erweiterungskomponenten eine erneute spezielle Zusammenstellung der Konfiguration und deren Verteilung.",
+   "Außerdem ist die Anwendungsvirtualisierung nicht auf alle Web-Browser und Betriebssysteme anwendbar."
+  ]
+ },
+ {
+  "title": "BSI-CS 047 – 3.2 Betriebssystemvirtualisierung (Teil 1)",
+  "doc_id": "BSI-CS 047",
+  "doc_title": "Absicherungsmöglichkeiten beim Einsatz von Web-Browsern",
+  "section": "3.2",
+  "section_title": "Betriebssystemvirtualisierung",
+  "sentences": [
+   "Die Betriebssystemvirtualisierung ermöglicht es, getrennt vom laufenden Betriebssystem (Host) ein weiteres Betriebssystem (Gast) virtuell zu betreiben.",
+   "Hier kann dann der Web-Browser genutzt werden.",
+   "Die Virtualisierung bildet einen vollständigen Computer mit allen Hardware-Ressourcen, wie Prozessor, Festplatte, Arbeitsspeicher und Grafikkarte, ab. Dabei ist der Gast vom Host vollständig isoliert.",
+   "Die Kommunikation zwischen Gast und Host ist auf wenige Möglichkeiten beschränkt (Austauschverzeichnisse, gemeinsame Nutzung von Netzwerk und Zwischenablage).",
+   "Hierdurch ist das IT-System des Nutzers vor einer Kompromittierung und vor einer Persistenz von Angriffen noch einmal wesentlich höher geschützt, als bei der Anwendungsvirtualisierung.",
+   "Dagegen sind kleinere Einschränkungen bei der Benutzbarkeit möglich.",
+   "Zudem ist häufig eine größere Leistungsfähigkeit der IT-Systeme erforderlich."
+  ]
+ },
+ {
+  "title": "BSI-CS 047 – 3.2 Betriebssystemvirtualisierung (Teil 2)",
+  "doc_id": "BSI-CS 047",
+  "doc_title": "Absicherungsmöglichkeiten beim Einsatz von Web-Browsern",
+  "section": "3.2",
+  "section_title": "Betriebssystemvirtualisierung",
+  "sentences": [
+   "Weiterhin ist die Aktualisierung eines Web-Browsers und der dazugehörigen Betriebssystemvirtualisierung sowie deren Verteilung aufwendiger als bei der Anwendungsvirtualisierung.",
+   "Allerdings können durch den Einsatz der Betriebssystemvirtualisierung verschiedene Web-Browser und Betriebssysteme nebeneinander unterstützt werden."
+  ]
+ },
+ {
+  "title": "BSI-CS 047 – 3.3 Terminalserver-Installation",
+  "doc_id": "BSI-CS 047",
+  "doc_title": "Absicherungsmöglichkeiten beim Einsatz von Web-Browsern",
+  "section": "3.3",
+  "section_title": "Terminalserver-Installation",
+  "sentences": [
+   "Ein Terminalserver ermöglicht den Betrieb eines Web-Browsers entkoppelt vom IT-System des Nutzers.",
+   "Auf dem Terminalserver können unabhängig vom Client Web-Browser und Betriebssysteme eingesetzt werden.",
+   "Das IT-System des Nutzers ist vor einer Kompromittierung und Persistenz von Angriffen ähnlich stark geschützt, wie bei der Betriebssystemvirtualisierung.",
+   "Im Falle eines erfolgreichen Angriffs können jedoch direkt mehrere Nutzer des Terminalservers betroffen sein.",
+   "Beim Terminalserver muss die Aktualisierung und Konfiguration des Web-Browsers nur einmal zentral durchgeführt werden, was den Wartungsaufwand reduziert.",
+   "Allerdings werden für eine Terminalserver-Installation ein dedizierter leistungsfähiger Server und leistungsfähige Netze benötigt, um flüssiges Arbeiten zu ermöglichen."
+  ]
+ },
+ {
+  "title": "BSI-CS 047 – 4 Bewertung der Vor- und Nachteile (Teil 1)",
+  "doc_id": "BSI-CS 047",
+  "doc_title": "Absicherungsmöglichkeiten beim Einsatz von Web-Browsern",
+  "section": "4",
+  "section_title": "Bewertung der Vor- und Nachteile",
+  "sentences": [
+   "Die Vor- und Nachteile der verschiedenen Implementierungsmöglichkeiten lassen sich in einer Bewertungstabelle mit den Stufen gut (+), mittel (o) und schlecht (-) zusammenfassen.",
+   "Benutzbarkeit (Funktion, Performance): direkte Installation +, Anwendungsvirtualisierung +, Betriebssystemvirtualisierung o, Terminalserver-Installation o.",
+   "Schutz vor Kompromittierung: direkte Installation -, Anwendungsvirtualisierung o, Betriebssystemvirtualisierung +, Terminalserver-Installation +."
+  ]
+ },
+ {
+  "title": "BSI-CS 047 – 4 Bewertung der Vor- und Nachteile (Teil 2)",
+  "doc_id": "BSI-CS 047",
+  "doc_title": "Absicherungsmöglichkeiten beim Einsatz von Web-Browsern",
+  "section": "4",
+  "section_title": "Bewertung der Vor- und Nachteile",
+  "sentences": [
+   "Schutz vor Persistenz bei Ausnutzung einer Schwachstelle: direkte Installation -, Anwendungsvirtualisierung o, Betriebssystemvirtualisierung +, Terminalserver-Installation o.",
+   "Aufwand für die Aktualisierung der Software-Komponenten: direkte Installation +, Anwendungsvirtualisierung -, Betriebssystemvirtualisierung -, Terminalserver-Installation +.",
+   "Aufwand für die IT-Infrastruktur (Installation, Betrieb und Wartung): direkte Installation +, Anwendungsvirtualisierung +, Betriebssystemvirtualisierung o, Terminalserver-Installation -."
+  ]
+ },
+ {
+  "title": "BSI-CS 047 – 4 Bewertung der Vor- und Nachteile (Teil 3)",
+  "doc_id": "BSI-CS 047",
+  "doc_title": "Absicherungsmöglichkeiten beim Einsatz von Web-Browsern",
+  "section": "4",
+  "section_title": "Bewertung der Vor- und Nachteile",
+  "sentences": [
+   "Unterstützung von verschiedenen Plattformen: direkte Installation -, Anwendungsvirtualisierung -, Betriebssystemvirtualisierung +, Terminalserver-Installation +."
+  ]
+ },
+ {
+  "title": "BSI-CS 047 – 5 Zusammenfassung",
+  "doc_id": "BSI-CS 047",
+  "doc_title": "Absicherungsmöglichkeiten beim Einsatz von Web-Browsern",
+  "section": "5",
+  "section_title": "Zusammenfassung",
+  "sentences": [
+   "Die Basis für die sichere Web-Nutzung stellt immer die Verwendung eines nach dem aktuellen Stand der Technik möglichst sicheren Browsers dar.",
+   "Wird dieser mithilfe einer Anwendungsvirtualisierung eingesetzt, verbessert sich die Sicherheit im Vergleich zur direkten Installation nur wenig, während sich der Aufwand für die Aktualisierung des Web-Browsers stark erhöht.",
+   "Erst die Betriebssystemvirtualisierung und die Terminalserver-Installation verbessern durch ihre starke Kapselung den Schutz vor einer Kompromittierung und einer Persistenz von Schadsoftware bei der Ausnutzung einer Schwachstelle deutlich.",
+   "Andererseits muss der damit einhergehende Mehraufwand – bei der Betriebssystemvirtualisierung für die Aktualisierung des Web-Browsers und bei der Terminalserver-Installation für die IT-Infrastruktur – berücksichtigt werden.",
+   "Deshalb sollten diese beiden Möglichkeiten dort zum Einsatz kommen, wo das Schutzniveau dieses erfordert oder die Nutzung eines direkt installierten sicheren Web-Browsers nicht möglich ist.",
+   "Unabhängig von der Implementierung empfiehlt sich immer eine Zwei-Browser-Strategie, um bei Bedarf stets eine alternative Möglichkeit zur Web-Nutzung zur Verfügung zu haben."
+  ]
+ },
+ {
+  "title": "BSI-CS 055 – Einleitung",
+  "doc_id": "BSI-CS 055",
+  "doc_title": "Sichere Bereitstellung von DNS-Diensten",
+  "section": null,
+  "section_title": "Einleitung",
+  "sentences": [
+   "Das Domain-Name-System (DNS) dient der Umsetzung von Domainnamen in IP-Adressen und umgekehrt.",
+   "DNS-Server zählen zu den Kernkomponenten der Internet-Infrastruktur.",
+   "Ein Ausfall oder eine Manipulation eines DNS-Servers kann sich gravierend auf die Funktionsfähigkeit des Internets auswirken.",
+   "Eine sorgfältige Konfiguration und Absicherung von DNS-Servern ist daher unerlässlich.",
+   "Diese BSI-Veröffentlichung zur Cyber-Sicherheit beschreibt wesentliche Aspekte, die für einen sicheren und zuverlässigen Betrieb von DNS-Servern umgesetzt sein sollten."
+  ]
+ },
+ {
+  "title": "BSI-CS 055 – 1 Netzanbindung",
+  "doc_id": "BSI-CS 055",
+  "doc_title": "Sichere Bereitstellung von DNS-Diensten",
+  "section": "1",
+  "section_title": "Netzanbindung",
+  "sentences": [
+   "DNS-Server sollten wie andere, für den Betrieb des Internets kritische Systeme in separaten Netzsegmenten betrieben werden und über eine breitbandige, robuste und redundante Netzanbindung verfügen.",
+   "Zum Schutz vor Angriffen auf DNS-Server unter Ausnutzung von gespooften IP-Adressen sollten gespoofte DNS-Anfragen bereits an den Netzwerk-Grenzen blockiert werden.",
+   "Siehe hierzu auch IETF BCP-38 / RFC 2827, „Network Ingress Filtering“.",
+   "Um die korrekte Funktion des DNS-Dienstes zu gewährleisten, muss sichergestellt sein, dass auch EDNS-Pakete (DNS-UDP-Pakete > 512 Byte, siehe IETF RFC 2671, „Extension Mechanisms for DNS“) von gegebenenfalls zwischengeschalteten Routern und Paketfiltern korrekt weitergeleitet werden."
+  ]
+ },
+ {
+  "title": "BSI-CS 055 – 2 Hardware",
+  "doc_id": "BSI-CS 055",
+  "doc_title": "Sichere Bereitstellung von DNS-Diensten",
+  "section": "2",
+  "section_title": "Hardware",
+  "sentences": [
+   "Die zum Betrieb der DNS-Server verwendete Hardware sollte ausreichend überdimensioniert sein, um Verkehrsspitzen bewältigen zu können.",
+   "Zur Gewährleistung einer hohen Ausfallsicherheit sollte auf eine ausreichende Hardware-Redundanz (mindestens zwei getrennte DNS-Server) geachtet werden.",
+   "Durch Realisierung einer räumlichen Trennung und ggf. Nutzung von Anycast-Adressierung kann die Ausfallsicherheit weiter erhöht werden.",
+   "Die Hardware sollte dediziert ausschließlich für den Betrieb eines DNS-Servers vorgesehen werden und keine weiteren unzugehörigen Dienste beheimaten."
+  ]
+ },
+ {
+  "title": "BSI-CS 055 – 3 Software (Teil 1)",
+  "doc_id": "BSI-CS 055",
+  "doc_title": "Sichere Bereitstellung von DNS-Diensten",
+  "section": "3",
+  "section_title": "Software",
+  "sentences": [
+   "Bei der Auswahl eines geeigneten DNS-Server Produkts (Software) sollte darauf geachtet werden, dass sich das Produkt bereits in der Praxis ausreichend bewährt hat.",
+   "Weiterhin sollte das Produkt die RFC-Standards zu DNS, darunter"
+  ]
+ },
+ {
+  "title": "BSI-CS 055 – 3 Software (Teil 2)",
+  "doc_id": "BSI-CS 055",
+  "doc_title": "Sichere Bereitstellung von DNS-Diensten",
+  "section": "3",
+  "section_title": "Software",
+  "sentences": [
+   "• IETF RFC 1034, „Domain Names – Concepts and Facilities“",
+   "• IETF RFC 1035, „Domain Names – Implementation and Specification“",
+   "• IETF RFC 2181, „Clarifications to the DNS Specification“",
+   "• IETF RFC 2671, „Extension Mechanisms for DNS“ erfüllen. Insbesondere sollte auch DNSSEC (s. u.) durch das Produkt vollständig unterstützt werden."
+  ]
+ },
+ {
+  "title": "BSI-CS 055 – 3 Software (Teil 3)",
+  "doc_id": "BSI-CS 055",
+  "doc_title": "Sichere Bereitstellung von DNS-Diensten",
+  "section": "3",
+  "section_title": "Software",
+  "sentences": [
+   "DNS-Server sollten während des Betriebs regelmäßig auf die Aktualität der eingesetzten Software sowie auf die Existenz bekannter Schwachstellen und Sicherheitsverletzungen kontrolliert werden.",
+   "Geeignete Meldekanäle für Schwachstellen (z. B. entsprechende Mailinglisten) sollten fortwährend überwacht werden.",
+   "In der Vergangenheit sind mehrfach sicherheitskritische Schwachstellen bei DNS-Server Produkten bekannt geworden, die unter anderem zur Abschaltung des DNS-Dienstes ausgenutzt werden konnten."
+  ]
+ },
+ {
+  "title": "BSI-CS 055 – 4.1 Trennung von autoritativen1 und rekursiven DNS-Servern",
+  "doc_id": "BSI-CS 055",
+  "doc_title": "Sichere Bereitstellung von DNS-Diensten",
+  "section": "4.1",
+  "section_title": "Trennung von autoritativen1 und rekursiven DNS-Servern",
+  "sentences": [
+   "Die DNS-Server Infrastruktur zur Bereitstellung von autoritativen Domain-Antworten sowie die DNS-Server Infrastruktur zur rekursiven Auflösung von DNS-Einträgen (DNS-Resolver) sollten voneinander getrennt betrieben werden, da sich die Funktionsweisen und daraus resultierend auch die Absicherungsmechanismen grundlegend unterscheiden."
+  ]
+ },
+ {
+  "title": "BSI-CS 055 – 4.2 DNS-Resolver",
+  "doc_id": "BSI-CS 055",
+  "doc_title": "Sichere Bereitstellung von DNS-Diensten",
+  "section": "4.2",
+  "section_title": "DNS-Resolver",
+  "sentences": [
+   "Schutz vor Spoofing / Reduzierung des Missbrauchrisikos für Reflection / Amplification-Angriffe Zum besseren Schutz vor gespooften DNS-Anfragen sollten DNS-Resolver nicht offen erreichbar („Open Resolver“) betrieben, sondern die Erreichbarkeit auf den eigenen Kundenkreis beschränkt werden (siehe auch BSI-Veröffentlichung zur Cyber-Sicherheit „Zunahme von DDoS-Angriffen durch DNS-Reflection“2).",
+   "Solche Angriffe sollten erkannt und entsprechende Gegenmaßnahmen ergriffen werden (vgl. Monitoring, weiter unten).",
+   "Weitere Informationen hierzu auch in IETF RFC 5358, „Preventing Use of Recursive Nameservers in Reflector Attacks“.",
+   "Schutz vor DNS-Cache Poisoning Um die Robustheit des Servers gegenüber DNS-Cache-Poisoning Angriffen zu erhöhen, sollte die Port-Randomisierung aktiviert sein.",
+   "Die Verkehrsmenge sollte regelmäßig beobachtet werden (siehe auch Monitoring, weiter unten), um Cache-Poisoning Angriffe frühzeitig zu entdecken.",
+   "Insbesondere bei breitbandig angebunden DNS-Resolvern ist eine Cache-Poisoning Attacke trotz aktivierter Port-Randomisierung weiterhin möglich.",
+   "Zur Risikoreduzierung sollten außerdem Obergrenzen für die Haltezeit von zwischengepufferten Daten (DNS-Cache) festgelegt werden. 1"
+  ]
+ },
+ {
+  "title": "BSI-CS 055 – 4.3 Autoritative Server",
+  "doc_id": "BSI-CS 055",
+  "doc_title": "Sichere Bereitstellung von DNS-Diensten",
+  "section": "4.3",
+  "section_title": "Autoritative Server",
+  "sentences": [
+   "Umgang mit rekursiven Anfragen Autoritative Server sollten rekursive Anfragen ablehnen und ausschließlich Anfragen nach eigenen Zonen akzeptieren.",
+   "Dynamische Updates Dynamische Updates nach IETF RFC 2136, „Dynamic Updates in the Domain Name System (DNS UPDATE)“, sollten deaktiviert oder per TSIG (IETF RFC 2845, „Secret Key Transaction Authentication for DNS“) abgesichert sein, um Manipulationen auszuschließen.",
+   "Zonentransfers Zonentransfers synchronisieren die Domain-Informationen zwischen einem Primary-DNS-Server und einem oder mehreren Secondary DNS-Servern.",
+   "Zonentransfers sollten nur zur Synchronisation zwischen den autoritativen Servern (Primary, Secondaries) einer Domain erlaubt sein und über TSIG (Transaction Signatures) abgesichert sein."
+  ]
+ },
+ {
+  "title": "BSI-CS 055 – 4.4 DNSSEC (Domain Name System Security Extensions) (Teil 1)",
+  "doc_id": "BSI-CS 055",
+  "doc_title": "Sichere Bereitstellung von DNS-Diensten",
+  "section": "4.4",
+  "section_title": "DNSSEC (Domain Name System Security Extensions)",
+  "sentences": [
+   "Das DNS-Protokoll weist konzeptionelle Schwachstellen auf.",
+   "Dies wurde beispielsweise durch die im Sommer 2008 aufgezeigte Designschwäche im DNS-Protokoll erneut deutlich.",
+   "Dieser Designfehler bewirkt, dass Cache-Poisoning Angriffe (und dadurch weitere Angriffsmethoden) erheblich erleichtert werden.",
+   "Zur Verbesserung des DNS-Protokolls und zur Erhöhung des künftigen Schutzniveaus sollte DNSSEC umgesetzt werden."
+  ]
+ },
+ {
+  "title": "BSI-CS 055 – 4.4 DNSSEC (Domain Name System Security Extensions) (Teil 2)",
+  "doc_id": "BSI-CS 055",
+  "doc_title": "Sichere Bereitstellung von DNS-Diensten",
+  "section": "4.4",
+  "section_title": "DNSSEC (Domain Name System Security Extensions)",
+  "sentences": [
+   "• Dies umfasst sowohl die Signierung und regelmäßige Validierung eigener Zonen",
+   "• als auch eine automatische Validierung von DNSSEC-Signaturen anderer Zonen."
+  ]
+ },
+ {
+  "title": "BSI-CS 055 – 4.4 DNSSEC (Domain Name System Security Extensions) (Teil 3)",
+  "doc_id": "BSI-CS 055",
+  "doc_title": "Sichere Bereitstellung von DNS-Diensten",
+  "section": "4.4",
+  "section_title": "DNSSEC (Domain Name System Security Extensions)",
+  "sentences": [
+   "Siehe hierzu auch IETF RFC 6781, „DNSSEC Operational Practices, Version 2“.",
+   "Die Validierung von DNSSEC sollte aktiviert sein; in der Anfangsphase sollte die DNSSEC-Validierung überwacht und Validierungsfehlern nachgegangen werden."
+  ]
+ },
+ {
+  "title": "BSI-CS 055 – 4.5 Verbergen der DNS-Server-Version",
+  "doc_id": "BSI-CS 055",
+  "doc_title": "Sichere Bereitstellung von DNS-Diensten",
+  "section": "4.5",
+  "section_title": "Verbergen der DNS-Server-Version",
+  "sentences": [
+   "Die Version des verwendeten DNS-Servers kann einem Angreifer wertvolle Informationen liefern.",
+   "Aus diesem Grund sollte die Versionsnummer verborgen werden.",
+   "Diese Maßnahme erhöht zwar nicht das Sicherheitsniveau des DNS-Servers, erschwert einem Angreifer jedoch die Informationsbeschaffung."
+  ]
+ },
+ {
+  "title": "BSI-CS 055 – 4.6 Rechtevergabe",
+  "doc_id": "BSI-CS 055",
+  "doc_title": "Sichere Bereitstellung von DNS-Diensten",
+  "section": "4.6",
+  "section_title": "Rechtevergabe",
+  "sentences": [
+   "Prozesse von DNS-Servern sollten nur mit den minimal notwendigen Rechten (insbesondere nicht mit Root-Rechten) ausgestattet werden, um die potenziellen Auswirkungen im Fall eines erfolgreichen Angriffs auf den Prozess gering zu halten."
+  ]
+ },
+ {
+  "title": "BSI-CS 055 – 5 Monitoring / Überwachung der DNS-Server (Teil 1)",
+  "doc_id": "BSI-CS 055",
+  "doc_title": "Sichere Bereitstellung von DNS-Diensten",
+  "section": "5",
+  "section_title": "Monitoring / Überwachung der DNS-Server",
+  "sentences": [
+   "Der Betrieb der DNS-Server sollte geeignet überwacht werden.",
+   "Insbesondere sollten die Logdateien der DNS-Server sowie des unterliegenden Betriebssystems regelmäßig überprüft und ausgewertet werden.",
+   "Bei Auffälligkeiten z. B. in Bezug auf die Auslastung (CPU-Last, I/O-Last) sollten umgehend weitere Analysen durchgeführt werden.",
+   "Unregelmäßigkeiten, deren Feststellung hilfreich zur Eingrenzung der Ursache oder zur Einleitung von Gegenmaßnahmen ist, sind beispielsweise:"
+  ]
+ },
+ {
+  "title": "BSI-CS 055 – 5 Monitoring / Überwachung der DNS-Server (Teil 2)",
+  "doc_id": "BSI-CS 055",
+  "doc_title": "Sichere Bereitstellung von DNS-Diensten",
+  "section": "5",
+  "section_title": "Monitoring / Überwachung der DNS-Server",
+  "sentences": [
+   "• Eine Häufung von Anfragen von bestimmten Quellen",
+   "• Eine Häufung von Anfragen bezüglicher bestimmter Resource-Records",
+   "• Eine Häufung von Anfragen bezüglich nicht existierender Resource-Records",
+   "• Eine Häufung von unerlaubten rekursiven Anfragen",
+   "• Eine Häufung von (fehlgeschlagenen) Zonentransfers",
+   "• Eine Häufung von DNSSEC-Validierungsfehlern"
+  ]
+ },
+ {
+  "title": "BSI-CS 055 – 5 Monitoring / Überwachung der DNS-Server (Teil 3)",
+  "doc_id": "BSI-CS 055",
+  "doc_title": "Sichere Bereitstellung von DNS-Diensten",
+  "section": "5",
+  "section_title": "Monitoring / Überwachung der DNS-Server",
+  "sentences": [
+   "Weiterhin sollte eine regelmäßige Überprüfung/Verifizierung der DNS-Server-Konfiguration durchgeführt werden.",
+   "Bei Feststellung von Unregelmäßigkeiten sollten die Ursache festgestellt und ggf. entsprechende Gegenmaßnahmen ergriffen werden (siehe auch Kapitel „Notfallvorsorge“, weiter unten)."
+  ]
+ },
+ {
+  "title": "BSI-CS 055 – 6 Zusammenarbeit / Abuse-Handling",
+  "doc_id": "BSI-CS 055",
+  "doc_title": "Sichere Bereitstellung von DNS-Diensten",
+  "section": "6",
+  "section_title": "Zusammenarbeit / Abuse-Handling",
+  "sentences": [
+   "Provider sollten untereinander zusammenarbeiten und Auffälligkeiten gegenseitig melden.",
+   "In Fällen, in denen eigene Server in DNS-Reflection Angriffe eingebunden sind, sollte die Bereitschaft zur Hilfe bei der Aufklärung des Sachverhaltes selbstverständlich sein."
+  ]
+ },
+ {
+  "title": "BSI-CS 055 – 7 Notfallvorsorge (Teil 1)",
+  "doc_id": "BSI-CS 055",
+  "doc_title": "Sichere Bereitstellung von DNS-Diensten",
+  "section": "7",
+  "section_title": "Notfallvorsorge",
+  "sentences": [
+   "Zu einem sicheren Betrieb gehören weitere regelmäßig durchzuführende Maßnahmen der Notfallvorsorge.",
+   "Der Ausfall eines DNS-Servers kann sich gravierend auf die Funktionsfähigkeit des Internets auswirken.",
+   "Funktioniert die Namensauflösung bei Kunden nicht mehr, wird dies in der Regel schnell öffentlich bekannt werden, was bei regelmäßigen oder längeren Ausfällen einen Imageschaden zur Folge haben kann.",
+   "Gleiches gilt, sofern DNS-Server für Angriffe auf Fremdsysteme missbraucht werden.",
+   "Es ist daher ein Konzept zu entwerfen, wie im Falle eines Ausfalls oder Missbrauchs die daraus resultierenden Folgen minimiert werden können.",
+   "Beim Festlegen der Aktivitäten sollten folgende Aspekte berücksichtigt werden:"
+  ]
+ },
+ {
+  "title": "BSI-CS 055 – 7 Notfallvorsorge (Teil 2)",
+  "doc_id": "BSI-CS 055",
+  "doc_title": "Sichere Bereitstellung von DNS-Diensten",
+  "section": "7",
+  "section_title": "Notfallvorsorge",
+  "sentences": [
+   "• Die Notfallplanung für DNS-Server muss in den existierenden Notfallplan integriert werden.",
+   "• Ein Systemausfall kann zu Datenverlusten führen; daher ist ein Datensicherungskonzept für die Zonendateien zu erstellen.",
+   "• Neben dem Notfallplan für den DNS-Server muss auch für das darunterliegende Betriebssystem ein Notfallplan existieren.",
+   "• War die Störung das Resultat eines Angriffs, muss die Schwachstelle behoben und dokumentiert werden.",
+   "• Es muss ein Wiederanlaufplan erstellt werden, damit das oder die IT-System(e) wieder geregelt hochgefahren werden kann/können.",
+   "• Der Notfallplan sollte auf seine Durchführbarkeit getestet werden."
+  ]
+ },
+ {
+  "title": "BSI-CS 055 – 7 Notfallvorsorge (Teil 3)",
+  "doc_id": "BSI-CS 055",
+  "doc_title": "Sichere Bereitstellung von DNS-Diensten",
+  "section": "7",
+  "section_title": "Notfallvorsorge",
+  "sentences": [
+   "Zu den Maßnahmen, die im Rahmen eines Notfallvorsorgekonzepts vorgesehen werden könnten, zählen:"
+  ]
+ },
+ {
+  "title": "BSI-CS 055 – 7 Notfallvorsorge (Teil 4)",
+  "doc_id": "BSI-CS 055",
+  "doc_title": "Sichere Bereitstellung von DNS-Diensten",
+  "section": "7",
+  "section_title": "Notfallvorsorge",
+  "sentences": [
+   "• Einschränkung von Anfragen (z. B. bei Missbrauch des Servers)",
+   "• Reaktive Filterung von Angriffsverkehr (z. B. bei Denial-of-Service Angriffen)",
+   "• Fluten (Flushen) des DNS-Caches (z. B. bei DNS-Cache-Poisoning Angriffen)",
+   "• Aktivierung eines Hot-Spare / Cold Spare (z. B. bei DoS-Angriffen)",
+   "• Andere Hardware",
+   "• Andere Software (z. B. bei bekannt werden einer Schwachstelle)"
+  ]
+ },
+ {
+  "title": "BSI-CS 055 – 8 Weitere Maßnahmen",
+  "doc_id": "BSI-CS 055",
+  "doc_title": "Sichere Bereitstellung von DNS-Diensten",
+  "section": "8",
+  "section_title": "Weitere Maßnahmen",
+  "sentences": [
+   "Die in BSI-Grundschutz M 4.237 („Sichere Grundkonfiguration eines IT-Systems“) beschriebenen Maßnahmen sollten umgesetzt sein.",
+   "Eine ausreichende physische Sicherheit der DNS-Server ist zu gewährleisten. Siehe hierzu u. a.:",
+   "• BSI-Grundschutz M 1.58, „Technische und organisatorische Vorgaben für Serverräume“",
+   "• BSI-Grundschutz M 2.17, „Zutrittsregelung und -kontrolle“",
+   "Weitere Hinweise zur Absicherung von DNS-Systemen finden sich im IT-Grundschutzbaustein B 5.18 \"DNS-Server\" sowie in den Dokumenten „Sichere Anbindung von lokalen Netzen an das Internet (ISi-LANA)\" aus den BSI-Standards zur Internet-Sicherheit."
+  ]
+ },
+ {
+  "title": "BSI-CS 055 – 9 DNS-Monitoring und Testtools (Teil 1)",
+  "doc_id": "BSI-CS 055",
+  "doc_title": "Sichere Bereitstellung von DNS-Diensten",
+  "section": "9",
+  "section_title": "DNS-Monitoring und Testtools",
+  "sentences": [
+   "Kostenfrei zugängliche DNS-Monitoring und Testtools stehen unter anderem auf nachfolgenden Webseiten zur Verfügung:"
+  ]
+ },
+ {
+  "title": "BSI-CS 055 – 9 DNS-Monitoring und Testtools (Teil 2)",
+  "doc_id": "BSI-CS 055",
+  "doc_title": "Sichere Bereitstellung von DNS-Diensten",
+  "section": "9",
+  "section_title": "DNS-Monitoring und Testtools",
+  "sentences": [
+   "• http://dns.measurement-factory.com/tools/dsc (DSC: A DNS STATISTICS COLLECTOR)",
+   "• http://nast.denic.de (Nameserver Predelegation Check Webinterface)",
+   "• http://dnscheck.iis.se (Test your DNS-server and find errors)",
+   "• https://www.dns-oarc.net/oarc/services/dnsentropy (Web-based DNS Randomness Test)",
+   "• https://www.dns-oarc.net/oarc/services/replysizetest (OARC's DNS Reply Size Test Server)",
+   "• http://dnsviz.net (A DNS visualization tool)"
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – Einleitung (Teil 1)",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": null,
+  "section_title": "Einleitung",
+  "sentences": [
+   "Unternehmen Internet-Domains sind ein wesentlicher Bestandteil jeder Internetanbindung, da sämtliche Inhalte von Internet-Diensten üblicherweise über Domainnamen adressiert werden.",
+   "Sowohl für die eigene Erreichbarkeit per E-Mail als auch die Erreichbarkeit des eigenen Webauftritts ist die Bereitstellung einer Internetdomain unerlässlich.",
+   "Je nach Geschäftsfeld kommen weitere Dienste hinzu, zum Beispiel werden häufig Updates für Softwareprodukte online über das Internet unter Nutzung einer speziellen Domain angeboten.",
+   "Der zuverlässigen Registrierung und Verwaltung von Internetdomains im weltweiten Domain-Name-Service (DNS)-Verbund kommt daher insbesondere bei kommerzieller Nutzung eine hohe Bedeutung zu. Registrierungswünsche für Domainnamen werden in der Regel von Domain-Dienstleistern, den sogenannten Domain-Registraren, über automatisierte Nutzerschnittstellen entgegen genommen und von diesen bei den Betreibern der jeweiligen Top-Level-Domain Infrastruktur (Domain-Registries) registriert.",
+   "Ein unberechtigter Zugriff auf beziehungsweise die Manipulation von Daten, die im Zusammenhang mit einer Domainregistrierung stehen, sind mit erheblichen Auswirkungen verbunden.",
+   "Ein zeitweiser Verlust der Kontrolle über eine Domain oder der mit ihr verknüpften Daten kann eine Veränderung der DNS-Konfiguration („Domain-Hijacking“) bewirken sowie eine Umleitung von Internetverkehr zu fremden maliziösen Zielen.",
+   "Zudem kann die Erreichbarkeit der vom Inhaber dafür vorgesehenen Dienste gestört werden (Denial-of-Service)."
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – Einleitung (Teil 2)",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": null,
+  "section_title": "Einleitung",
+  "sentences": [
+   "Das Risiko wird dadurch, dass Manipulationen von DNS-Daten aufgrund von Caching-Mechanismen der DNS-Server auch nach einer Korrektur der Manipulation häufig bis zu 48 Stunden nachwirken, weiter erhöht.",
+   "Besonders gefährdet sind Inhaber von geschäftskritischen Domains („High-Profile-Domains“ wie google.de, bund.de), insbesondere wenn diese von Domain-Registraren bedient werden, deren Geschäftsprozesse mehr auf die Bedürfnisse von Privatkunden optimiert sind.",
+   "Darüber hinaus werden Domains auch häufig ausschließlich mit der Absicht registriert, Schadsoftware zu verbreiten oder Phishing-Angriffe durchzuführen.",
+   "Die vorliegenden Handlungsempfehlung „Sichere Bereitstellung von Domaindienstleistungen“ zeigt auf, wie eine sichere Bereitstellung von Domaindienstleistungen erfolgen und einer böswilligen Verwendung von Domainnamen bereits während des Registrierungsverfahrens vorgebeugt werden kann.",
+   "Zudem werden Maßnahmen erläutert, die einen sicheren Betrieb gewährleisten und Vorgehensweisen bei Schadensfällen beschreiben.",
+   "Die auf dem Markt tätigen Anbieter für Domaindienstleistungen fokussieren unterschiedliche Zielgruppen und unterscheiden sich deshalb auch hinsichtlich des angebotenen Schutzniveaus voneinander."
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – Einleitung (Teil 3)",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": null,
+  "section_title": "Einleitung",
+  "sentences": [
+   "Das sechste Kapitel umfasst speziell für Unternehmensvertreter wichtige Hinweise, auf welche Dienstleistungen je nach individuellem Schutzbedarf besonders geachtet werden sollte."
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 1 Angriffswege",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "1",
+  "section_title": "Angriffswege",
+  "sentences": [
+   "Dem Angreifer stehen zur Domain-Manipulation potenziell verschiedene Angriffswege zur Verfügung.",
+   "1.1 Eindringen über die Kunden-Administrationsoberfläche des Registrars Wenn die Kunden-Administrationsoberfläche des Registrars eine Schwachstelle (z. B. SQL-Injection) enthält, kann ein Angreifer sich Zugang dazu verschaffen und eine Manipulation vornehmen.",
+   "Angreifer scannen Administrationsoberflächen bei Registraren häufig nach Schwachstellen.",
+   "Im Erfolgsfall sind unter Umständen alle durch den Registrar verwalteten Daten kompromittiert."
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 1.2 Missbrauch der Password-Recovery-Prozedur",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "1.2",
+  "section_title": "Missbrauch der Password-Recovery-Prozedur",
+  "sentences": [
+   "Password-Recovery-Prozeduren basieren häufig auf der Zusendung einer speziellen Mail an ein hinterlegtes E-Mail-Konto.",
+   "Der Angreifer kann versuchen, sich zunächst Zugang zu diesem Mailkonto zu verschaffen oder ein alternatives Mailkonto zu hinterlegen, um das Kundenpasswort zu erhalten und indirekt auf die Domainverwaltungsschnittstelle oder eine telefonische Auftragsannahme zuzugreifen."
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 1.3 Social-Engineering",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "1.3",
+  "section_title": "Social-Engineering",
+  "sentences": [
+   "Der Angreifer kann versuchen über Social-Engineering-Angriffe – zum Beispiel Password-Recovery-Prozedur, telefonische Auftragsannahme oder postalische Zusendung gefälschter Aufträge – gegen Mitarbeiter des Registrars Zugriff auf Systeme und Daten zu erlangen."
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 1.4 Manipulation oder Blockade von Änderungsbenachrichtigungen",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "1.4",
+  "section_title": "Manipulation oder Blockade von Änderungsbenachrichtigungen",
+  "sentences": [
+   "Kunden erhalten üblicherweise eine Benachrichtigung per E-Mail bei der Änderung von Domaindaten.",
+   "Angreifer versuchen regelmäßig, diese Benachrichtigungen zu manipulieren oder zu unterbinden."
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 1.5 Schwache Kennwörter",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "1.5",
+  "section_title": "Schwache Kennwörter",
+  "sentences": [
+   "Die Kunden-Authentisierung erfolgt häufig ausschließlich über eine Benutzerkennung und ein häufig schwaches Passwort.",
+   "Häufig werden auch für alle Domains eines Inhabers die gleichen Zugangsdaten verwendet.",
+   "Durch Passwort-Diebstahl oder einen erfolgreichen Brute-Force-Angriff erhält der Angreifer so umfangreichen Zugriff auf die Domainverwaltung."
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 1.6 Unberechtigter Registrar- und/oder Inhaberwechsel",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "1.6",
+  "section_title": "Unberechtigter Registrar- und/oder Inhaberwechsel",
+  "sentences": [
+   "Ein Registrarwechsel ist üblicherweise durch verschiedene Maßnahmen seitens der Registry und des Registrars geschützt:",
+   "beispielsweise Domainpasswort, Bestätigung des Registrarwechsels durch den Eigentümer oder administrativen Kontakt.",
+   "Diese Mechanismen können Ziel eines Angriffs werden mit dem Zweck, einen unberechtigten Wechsel des Registrars durchzuführen und somit den Transfer einer Domain in einen von Dritten kontrollierten Account bei einem anderen Registrar zu bewirken."
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 1.7 Kompromittierung von Registrar-Systemen",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "1.7",
+  "section_title": "Kompromittierung von Registrar-Systemen",
+  "sentences": [
+   "Ein Angreifer kann versuchen, Zugriff auf Verwaltungs- und Datenbanksysteme des Registrars zu erlangen um auf diese Weise die Kontrolle über sämtliche durch den Registrar verwalteten Domains zu erhalten."
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 1.8 Missbräuchliche Nutzung von Registrar-Registry Schnittstellen",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "1.8",
+  "section_title": "Missbräuchliche Nutzung von Registrar-Registry Schnittstellen",
+  "sentences": [
+   "Ein Angriff kann auch unter Ausnutzung einer unzureichend abgesicherten Registrar-Registry-Schnittstelle erfolgen."
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 2.1 Basisschutz",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "2.1",
+  "section_title": "Basisschutz",
+  "sentences": [
+   "Domain-Registrare sollten einen umfangreichen Basisschutz für die Erbringung ihrer Dienstleistungen gewährleisten. Hierzu zählen:",
+   "• Anwendung üblicher Best-Practices zum Schutz ihrer Server1,2",
+   "• TLS-geschützter Zugang zu Administrationsoberflächen für Domain-Konfigurationen 3",
+   "• Regelmäßiges Monitoring ihrer Systeme",
+   "• Schnellstmögliche Reaktion auf Missbrauchsmeldungen"
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 2.2 DNSSEC (Teil 1)",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "2.2",
+  "section_title": "DNSSEC",
+  "sentences": [
+   "DNSSEC sollte unterstützt werden.",
+   "Dies umfasst mindestens die Entgegennahme und Verarbeitung von entsprechendem Schlüsselmaterial (im DNSKEY- oder DS-Format).",
+   "Sofern für den Kunden auch der Betrieb von DNS-Servern als Dienstleistung angeboten wird, sollte auch die Signierung der Zonen und der Betrieb der hierzu erforderlichen DNSSEC-Infrastruktur zum angebotenen Portfolio gehören. Diese umfasst: 1 2 3"
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 2.2 DNSSEC (Teil 2)",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "2.2",
+  "section_title": "DNSSEC",
+  "sentences": [
+   "• Schlüsselimport / -export",
+   "• Import / -export von Zonendateien",
+   "• Validierung signierter Zonen",
+   "• Festlegung von Verfahren und Mechanismen für den Schlüsselwechsel (Key-Rollover) und eine Abschaltung von DNSSEC im Notfall."
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 2.2 DNSSEC (Teil 3)",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "2.2",
+  "section_title": "DNSSEC",
+  "sentences": [
+   "Siehe auch BSI ISI-Reihe, „Absicherung eines Servers“ https://www.bsi.bund.de/DE/Themen/Cyber-Sicherheit/ISi-Reihe/ISi-Server/server_node.html Siehe auch BSI IT-Grundschutz-Kataloge https://www.bsi.bund.de/DE/Themen/IT-Grundschutz/IT-Grundschutz-Kataloge/itgrundschutzkataloge_node.html Siehe auch Mindestsicherheitsanforderungen für den Einsatz des SSL/TLS-Protokolls in der öffentlichen Verwaltung https://www.bsi.bund.de/DE/Publikationen/Mindeststandards/SSL-TLS-Protokoll/SSL-TLS-Protokoll_node.html Das beim Registrar eingesetzte Provisionierungssystem sollte eine leichte Verarbeitung auch aller weiteren Resource-Record (RR)-Typen (z. B. TLSA-Einträge zur Nutzung von DNS-DANE) ermöglichen."
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 2.3 Authentifizierungsverfahren zur Domainverwaltung (Teil 1)",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "2.3",
+  "section_title": "Authentifizierungsverfahren zur Domainverwaltung",
+  "sentences": [
+   "Üblicherweise bekommen die Kunden von Registraren einen Account zur Verwaltung ihrer Domains zugeteilt.",
+   "Sie können damit über eine Administrationsoberfläche DNS-Einträge bearbeiten, neue Domains registrieren und weitere Dienste buchen und verwalten.",
+   "Mit der Information über Benutzernamen und Passwort können Unbefugte Zugriff auf diese Schnittstellen und Daten erhalten und diese auch ändern.",
+   "Um einen Angriff mittels Domain-Hijacking zu verhindern, muss die Benutzer-Schnittstelle gut abgesichert sein.",
+   "Beispiele und Empfehlungen zur Absicherung einer solchen Schnittstelle hat das BSI in der ISI-Reihe mit der Veröffentlichung „ISI-Web-Server“ zur Verfügung gestellt 4.",
+   "Zur Basisabsicherung eines Passwort gestützten Authentifizierungsverfahrens gehören:"
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 2.3 Authentifizierungsverfahren zur Domainverwaltung (Teil 2)",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "2.3",
+  "section_title": "Authentifizierungsverfahren zur Domainverwaltung",
+  "sentences": [
+   "• Vorgabe einer minimalen Passwort-Länge",
+   "• Vorgabe einer maximalen Gültigkeitsdauer",
+   "• Komplexitätsprüfung",
+   "• Schutz gegen Brute-Force-Angriffe"
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 2.3 Authentifizierungsverfahren zur Domainverwaltung (Teil 3)",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "2.3",
+  "section_title": "Authentifizierungsverfahren zur Domainverwaltung",
+  "sentences": [
+   "Password-Recovery-Mechanismen sollten nach Möglichkeit nicht allein auf Zusendung einer Mail an ein hinterlegtes E-Mail-Konto basieren.",
+   "Einschreiben und andere Lösungen (z. B. SMS) stellen eine Alternative dar.",
+   "Darüber hinaus sollten weitere Schutzmechanismen optional angeboten werden:"
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 2.3 Authentifizierungsverfahren zur Domainverwaltung (Teil 4)",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "2.3",
+  "section_title": "Authentifizierungsverfahren zur Domainverwaltung",
+  "sentences": [
+   "• Zugriffsbeschränkung auf bestimmte IP-Adressen des Kunden",
+   "• Zwei-Faktor Authentisierung / Nutzung eines Hardware- oder Software-Tokens",
+   "• Authentisierung über Challenge / Response Verfahren (Nutzung einer Untermenge von"
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 2.3 Authentifizierungsverfahren zur Domainverwaltung — Frage-Antwort-Paaren)",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "2.3",
+  "section_title": "Authentifizierungsverfahren zur Domainverwaltung",
+  "sentences": [
+   "Frage-Antwort-Paaren)"
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 2.3 Authentifizierungsverfahren zur Domainverwaltung (Teil 6)",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "2.3",
+  "section_title": "Authentifizierungsverfahren zur Domainverwaltung",
+  "sentences": [
+   "• Möglichkeit, pro Domain unterschiedliche Authentisierungsdaten zu verwenden, statt eines Zugangs auf das gesamte Kundenportfolio"
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 2.4 Logging",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "2.4",
+  "section_title": "Logging",
+  "sentences": [
+   "Anmelde- und Änderungsvorgänge über die Administrationsoberfläche sollten protokolliert und dem Kunden geeignet (Mail, SMS) bereitgestellt werden."
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 2.5 Monitoring",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "2.5",
+  "section_title": "Monitoring",
+  "sentences": [
+   "Registrare sollten ein Echtzeit-Monitoring der DNS-Daten und insbesondere auch der WHOIS-Daten durch regelmäßige Abfragen bei externen DNS-Servern anbieten und den Kunden bei Veränderungen informieren."
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 2.6 Kunden-Kommunikation (Teil 1)",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "2.6",
+  "section_title": "Kunden-Kommunikation",
+  "sentences": [
+   "Veränderungen an Kundenstammdaten, DNS-Konfigurationen oder dem Status einer Domain sollten immer bestätigt werden.",
+   "Sofern ein Versand der Änderungsbestätigung per E-Mail erfolgt, sollten diese signiert (DKIM, PGP, SMIME) versendet werden.",
+   "Anbieter sollten ihren Kunden ermöglichen, verschiedene Kontaktadressen für unterschiedliche Vorgänge (Bestellungen, Ablauf von Domains, Domaintransfers, DNS-Datenänderungen, Stammdatenänderungen, Verifikation von Kundendaten, Werbung für neue Funktionen) zu hinterlegen.",
+   "Vom Kunden hinterlegte Kontaktadressen sollten bei jeder Änderung auf Funktionsfähigkeit und Korrektheit überprüft werden.",
+   "Kontakt-E-Mail-Adressen nutzen häufig die gleiche Domain, sodass bei Veränderungen der Benachrichtigungsweg gestört ist.",
+   "Der Kunde sollte daher darauf hingewiesen werden, dass nach Möglichkeit für Kontakt-E-Mail-Adressen eine andere Domain verwendet werden sollte.",
+   "Anbieter sollten ihre Kunden regelmäßig daran erinnern, die Aktualität der hinterlegten WHOIS-Daten zu überprüfen und bei Bedarf zu aktualisieren."
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 2.6 Kunden-Kommunikation (Teil 2)",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "2.6",
+  "section_title": "Kunden-Kommunikation",
+  "sentences": [
+   "Sobald neue Schutzmaßnahmen implementiert wurden, sollte dies dem Kunden mitgeteilt werden.",
+   "Neben der Kommunikation per E-Mail sollten dem Kunden auch alternative Kommunikationswege (Postalisch, Telefon, Fax) angeboten werden.",
+   "Dem Kunden sollte ggf. die Möglichkeit eingeräumt werden, die Abschaltung von Web-basierten Änderungen seiner Domains zu veranlassen und eine Begrenzung auf eine schriftliche Auftragserteilung vorzunehmen, um Online-Manipulationen seiner Daten als Bedrohung auszuschließen.",
+   "Abhängig von den Erwartungen und Ansprüchen des Kunden sollte ein fester Ansprechpartner zur Verfügung stehen.",
+   "Es sollten mit Geschäftskunden Vereinbarungen über Notfall-Erreichbarkeiten getroffen werden.",
+   "Eskalationsprozesse sollten definiert und mit dem Kunden abgestimmt sein."
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 2.7 Schutz vor unberechtigten Domainübertragungen (Teil 1)",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "2.7",
+  "section_title": "Schutz vor unberechtigten Domainübertragungen",
+  "sentences": [
+   "Die Registrare haben Schutzmaßnahmen vor unberechtigten Transferanfragen (requests) zu ergreifen.",
+   "Insbesondere bei Kunden mit geschäftskritischem Domainbestand sollten Domaintransferanfragen als Sicherheitsvorfall behandelt und doppelt geprüft werden.",
+   "Eine Domainübertragung sollte unter anderem über einen Transfer- bzw. Auth-Code abgesichert werden.",
+   "Hierzu sollte pro Domain jeweils ein eigenständiger Code verwendet werden.",
+   "Insbesondere bei besonders schutzwürdigen Domains sollten die zur Verfügung stehenden Registrar-Locks (clientTransferProhibited, clientUpdateProhibited, clientDeleteProhibited) standardmäßig gesetzt werden.",
+   "Weitere, von der jeweiligen Top-Level-Domainregistry ggf. angebotene Schutzmöglichkeiten, sollten evaluiert und umgesetzt bzw. den Kunden angeboten werden, sofern diese Schutzmöglichkeiten mit Kosten verbunden sind.",
+   "Die Richtlinie „Policy on Transfer of Registrations between Registrars“ von der Internet Corporation for Assigned Names and Numbers (ICANN) gibt Aufschluss über die Verfahrensweise zu Domainübertragungen.5 Da diese Richtlinie Mindestanforderungen darstellt, sollten diese auch beachtet werden."
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 2.7 Schutz vor unberechtigten Domainübertragungen (Teil 2)",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "2.7",
+  "section_title": "Schutz vor unberechtigten Domainübertragungen",
+  "sentences": [
+   "http://www.icann.org/en/resources/registrars/transfers/policy-01jun12.htm Der Registrar sollte regelmäßig Best-Practices für Prozesse zur Domainverwaltung der unterschiedlichen Registries bzw. der ICANN evaluieren und diese TLD-übergreifend für seine Kunden implementieren, falls diese Best-Practices sich verallgemeinern lassen und der Verbesserung der Sicherheit bzw. der Datenqualität dienen."
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 2.8 Kündigung, Löschen und Ablauf von Domains",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "2.8",
+  "section_title": "Kündigung, Löschen und Ablauf von Domains",
+  "sentences": [
+   "Die Löschprozesse von Domains sollten so abgesichert werden, dass ein versehentliches Löschen nicht möglich ist.",
+   "Insbesondere bei High-Profile-Domains sollte eine Domain nicht ohne ausdrückliche Kundenbestätigung gelöscht werden.",
+   "Über das Vorgehen bei Ablauf einer Zahlungsperiode sollte mit dem Kunden eine explizite Vereinbarung getroffen werden.",
+   "Zum Schutz vor Drop Catching, das heißt unmittelbare Neuregistrierung der gelöschten Domain durch Dritte, sollte das Verfallsdatum einer Domain (Expiration Date) öffentlich nicht zugänglich sein."
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 2.9 Umgang mit personenbezogenen Daten",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "2.9",
+  "section_title": "Umgang mit personenbezogenen Daten",
+  "sentences": [
+   "Für den Umgang bei der Erhebung, Speicherung und Verarbeitung personenbezogener Daten wird auf die EU-Richtlinie 95/46/EC sowie länderspezifische Regelungen verwiesen, an die sich die Registrare halten sollen.",
+   "Registrare sollten in ihren Datenschutzrichtlinien darauf hinweisen, wie sie mit personenbezogenen Daten umgehen, welche Daten für welchen Zweck erhoben werden und wie lange nach Ablauf einer Kundenbeziehung diese Daten für welche Zugriffe zur Verfügung gehalten werden.",
+   "Registrare sollten im Vorfeld einer Domainregistrierung deutlich darauf hinweisen, dass beispielsweise die bei der Registrierung verwendeten Daten der Kontakte Gegenstand der öffentlichen Whois-Datenbanken werden und vom Kunden bzw. dem Domainkontakt selbst eine entsprechende Zustimmung einholen."
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 2.10 Schutz vor automatisiert durchgeführten Abfragen",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "2.10",
+  "section_title": "Schutz vor automatisiert durchgeführten Abfragen",
+  "sentences": [
+   "Wenn Registrare über ihr Internetangebot auch Informationen über Domains Dritter anbieten oder webbasierte whois-Abfragen zulassen, so ist darauf zu achten, dass solche Abfragen nicht automatisiert, sondern nur durch Personen erfolgen können.",
+   "Ein Schutz gegen automatisierte Abfragen ist beispielsweise Completely Automated Public Turing test to tell Computers and Humans Apart (CAPTCHA).",
+   "Auch eine Begrenzung der Anzahl der Abfragen je nach abfragender IP-Adresse ist eine sinnvolle Maßnahme."
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 2.11 Data-Mining Schutz",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "2.11",
+  "section_title": "Data-Mining Schutz",
+  "sentences": [
+   "Um in der Entwicklung befindliche Produkte zu schützen, darf die Öffentlichkeit keinen Zugang zu Daten erhalten, über die ein Data-Mining möglich wäre.",
+   "Binden Registrare Dienste Dritter (z. B. CAPTCHA-Dienste6) in ihre Webpräsenz ein, sollte darauf geachtet werden, dass die Anfragen der Kunden nicht im Sinne von Data-Mining beim Diensteanbieter verwendet werden können.",
+   "Das setzt voraus, dass hierzu verwendbare Informationen weder direkt über das Portal des Registrars noch indirekt über den Webbrowser des Benutzers an solche Diensteanbieter übermittelt werden."
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 2.12 Signierte WHOIS-Antworten",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "2.12",
+  "section_title": "Signierte WHOIS-Antworten",
+  "sentences": [
+   "Wegen der Rechtsverwertbarkeit von Daten aus WHOIS-Abfragen ist das Signieren der Antwort-Daten grundsätzlich von Vorteil."
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 3.1 IPv6",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "3.1",
+  "section_title": "IPv6",
+  "sentences": [
+   "IPv6 sollte ebenfalls unterstützt werden.",
+   "Dies beinhaltet die Anbindung der autoritativen Nameserver über IPv6 und die Entgegennahme und Verarbeitung von IPv6-Glue-Records."
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 3.2 Statistiken",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "3.2",
+  "section_title": "Statistiken",
+  "sentences": [
+   "Die Bereitstellung von Auslastungs- und Nutzungsstatistiken der Nameserver sorgt für Transparenz gegenüber dem Kunden."
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 3.3 Datentransparenz",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "3.3",
+  "section_title": "Datentransparenz",
+  "sentences": [
+   "Anfragen zu nicht existierenden Domains sollten nicht standardmäßig umgeleitet und zu Werbezwecken missbraucht werden."
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 3.4 Berücksichtigung der Empfehlung zur sicheren Bereitstellung von DNS-Diensten",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "3.4",
+  "section_title": "Berücksichtigung der Empfehlung zur sicheren Bereitstellung von DNS-Diensten",
+  "sentences": [
+   "Alle weiteren in der Handlungsempfehlung „Sichere Bereitstellung von DNS-Diensten“ (BSI-CS 055) gegebenen Maßnahmen sollten zusätzlich berücksichtigt werden."
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 4 Kundenberatung",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "4",
+  "section_title": "Kundenberatung",
+  "sentences": [
+   "Registrare sollten Empfehlungen für eine sichere Inhaber-Registrar Kommunikation (z. B. durch eine Liste häufig gestellter Fragen, FAQ) geben.",
+   "Anbieter sollten Kunden über die Bedeutung von Domains und bestehende Schutzmöglichkeiten aufklären.",
+   "Registrare sollten Kunden über alle angebotenen Dienstleistungen und Schutzmaßnahmen informieren bzw. diese auf ihrer Webseite veröffentlichen."
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 5 Domainmissbrauch",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "5",
+  "section_title": "Domainmissbrauch",
+  "sentences": [
+   "Ob eine Domain legitim oder missbräuchlich verwendet werden soll, kann oft schon im Verfahren bei der Registrierung festgestellt werden.",
+   "Es ist wünschenswert, dass in Fällen des offensichtlichen Missbrauchs eine Registrierung versagt bleibt.",
+   "Die Verifizierung von Neukunden-Daten bzw. Domain-Eigentümerdaten durch den Registrar kann Missbrauchsversuche im Vorfeld entdecken und durch geeignete Prozessdefinitionen verhindern."
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 5.1 Identitätsprüfung (Teil 1)",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "5.1",
+  "section_title": "Identitätsprüfung",
+  "sentences": [
+   "Registrierungsdaten sollten bei Neuregistrierungen verifiziert oder zumindest auf Plausibilität geprüft werden, da dies einen Schutz vor einer böswilligen Nutzung von Domains bietet.",
+   "Zur Überprüfung der Identität eines Neukunden können Registrare unterschiedliche Methoden nutzen, die sich sowohl hinsichtlich des Aufwands als auch der Zuverlässigkeit unterscheiden:",
+   "7 https://www.allianz-fuer-cybersicherheit.de/ACS/DE/_downloads/techniker/netzwerk/BSI-CS-055.pdf"
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 5.1 Identitätsprüfung (Teil 2)",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "5.1",
+  "section_title": "Identitätsprüfung",
+  "sentences": [
+   "• Verifikation der E-Mail-Adresse (unzureichend)",
+   "• Rückrufverfahren per Telefon (Festnetzanschluss)",
+   "• Abgleich mit Adressdatenbanken",
+   "• Überprüfung der Kontoverbindung oder Kreditkartennummer",
+   "• PostIdent-Verfahren",
+   "• Nutzung des neuen Personalausweises (NPA)"
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 5.1 Identitätsprüfung (Teil 3)",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "5.1",
+  "section_title": "Identitätsprüfung",
+  "sentences": [
+   "• Handelsregisterauszug bei juristischen Personen"
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 5.1 Identitätsprüfung (Teil 4)",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "5.1",
+  "section_title": "Identitätsprüfung",
+  "sentences": [
+   "Die ICANN definiert im 2013 RAA (Registrar Accreditation Agreement) ebenfalls entsprechende Prozesse zur Überprüfung von Kunden und Domainkontakten, die einen gewissen Mindeststandard vorgeben und angewendet bzw. ergänzt werden sollten."
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 5.2 Tests auf maliziöse Verwendung von Domains",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "5.2",
+  "section_title": "Tests auf maliziöse Verwendung von Domains",
+  "sentences": [
+   "Um böswillig genutzte Domains schnell aufzufinden, sollten Registrare Konfigurationsprofile zu den von ihnen verwalteten Domains erstellen.",
+   "Damit kann ein niedriger TTL (Time To Live)-Wert zum Beispiel ein Hinweis auf die Verwendung der Domain in einem Fast-Flux-Netzwerk sein."
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 5.3 Zusammenarbeit mit den CERTs und den Strafverfolgungsbehörden (Teil 1)",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "5.3",
+  "section_title": "Zusammenarbeit mit den CERTs und den Strafverfolgungsbehörden",
+  "sentences": [
+   "Bei offensichtlichem Domain-Missbrauch sollten Registrare und TLD-Registries mit den Computer Notfallteams (CERTs) und den Strafverfolgungsbehörden zusammenarbeiten und dafür Kontaktdaten und Ansprechpartner zur Verfügung stellen.",
+   "Zur Sicherstellung einer schnellstmöglichen Vorfallsbearbeitung sollten im Vorfeld die Vorgehensweisen für unterschiedliche Fälle beschrieben sein.",
+   "Damit über die Schnittstellen zwischen den Registraren und den Behörden keine Fehlinformationen von Unberechtigten eingeschleust werden können, sollten sich die Ansprechpartner gegenseitig identifizieren und autorisieren können.",
+   "Registrare sollten untereinander Informationen über infizierte Domains austauschen.",
+   "Es sollte ein funktionierender Abuse-Kontakt eingerichtet sein, darüber eingehende Meldungen sollten ggf. automatisiert bearbeitet werden.",
+   "Bei „Registrar übergreifenden Störungen“ sollte zudem eine gegenseitige Hilfestellung erfolgen.",
+   "Registrare sollten aktiv mit dem BSI zusammenarbeiten, mit dem Ziel, Gefährdungen für Bürger im Internet zu vermeiden."
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 5.3 Zusammenarbeit mit den CERTs und den Strafverfolgungsbehörden (Teil 2)",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "5.3",
+  "section_title": "Zusammenarbeit mit den CERTs und den Strafverfolgungsbehörden",
+  "sentences": [
+   "Wenn über eine Domain Schadprogramme verteilt werden, dann sollte diese Domain bzw. der betroffene Teilbereich der Webseite schnellstmöglich unschädlich bzw. unerreichbar „geschaltet“ werden.",
+   "In den mit den Kunden vereinbarten AGBs sollte hierzu ein entsprechendes Vorgehen vereinbart werden.",
+   "Dazu gibt es unterschiedliche Ansätze:",
+   "Die Domain wird als regulärer Eintrag im DNS entfernt.",
+   "Die DNS-Auflösung übermittelt die IP-Adresse eines Proxies, über den der Besucher der Webseite eine Warnmeldung mittels Vorschaltseite erhält.",
+   "Es wird in Absprache mit dem Domaininhaber ein Sinkholing eingerichtet."
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 5.3 Zusammenarbeit mit den CERTs und den Strafverfolgungsbehörden (Teil 3)",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "5.3",
+  "section_title": "Zusammenarbeit mit den CERTs und den Strafverfolgungsbehörden",
+  "sentences": [
+   "Betroffene Webserver bzw. einzelne Verzeichnisse werden entfernt bzw. gesperrt."
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 6 Unternehmensempfehlung",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "6",
+  "section_title": "Unternehmensempfehlung",
+  "sentences": [
+   "Internetdomains haben heute für Unternehmen branchenübergreifend eine herausragende Bedeutung.",
+   "In vielen Fällen ist eine ungestörte Erreichbarkeit Voraussetzung für die alltäglichen Geschäftsprozesse.",
+   "Funktionsstörungen können einen erheblichen Imageschaden selbst dann auslösen, wenn für die eigentliche Geschäftstätigkeit die ständige Erreichbarkeit über das Internet eine untergeordnete Bedeutung hat."
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 6.1 Schutzbedarfsfeststellung",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "6.1",
+  "section_title": "Schutzbedarfsfeststellung",
+  "sentences": [
+   "Unternehmen sollten die Prozesse rund um die Verwaltung ihrer Domains daher in ihre Risikobewertung und bei einer Betrachtung von kritischen Geschäftsprozessen mit einbeziehen.",
+   "Schutzmaßnahmen für Domaindaten sollten gleichwertig sein zu Schutzmaßnahmen, die für das unternehmenseigene Intranet, für Datenbanken, etc. ergriffen werden."
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 6.2 Anbieterauswahl (Teil 1)",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "6.2",
+  "section_title": "Anbieterauswahl",
+  "sentences": [
+   "Anbieter von Domaindienstleistungen (Domain-Registrare) unterscheiden sich hinsichtlich der angebotenen Dienstleistungen und Schutzmaßnahmen stark voneinander.",
+   "Ein auf die Registrierung vieler Domains spezialisierter Registrar bietet häufig Service mit folgenden Eigenschaften:"
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 6.2 Anbieterauswahl (Teil 2)",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "6.2",
+  "section_title": "Anbieterauswahl",
+  "sentences": [
+   "• hoch automatisiert",
+   "• auf das Massengeschäft ausgerichtet",
+   "• Korrespondenz via E-Mail",
+   "• automatisierte Vorfallsbearbeitung / TT-System",
+   "• TLS-geschützter Zugang zur Domain-Konfiguration",
+   "• evtl. geschützte WHOIS-Daten"
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 6.2 Anbieterauswahl (Teil 3)",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "6.2",
+  "section_title": "Anbieterauswahl",
+  "sentences": [
+   "• evtl. Domain-Transferprotektion",
+   "Dem gegenüber haben sich andere Anbieter auf Kunden von Domainnamen mit hohem Geschäftswert (sog. High-Profile-Domains) fokussiert, und bieten häufig Service mit folgenden Eigenschaften:"
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 6.2 Anbieterauswahl (Teil 4)",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "6.2",
+  "section_title": "Anbieterauswahl",
+  "sentences": [
+   "• Qualitätsservice für Kunden von High-Profile-Domains",
+   "• Betrachtung von Domainregistrierungen als kritischer Geschäftsprozess",
+   "• Schutz vor Ablauf von Domainregistrierungen",
+   "• DNSSEC",
+   "• Schutz vor Domain-Hijacking",
+   "• Verarbeitung von Veränderungen mit Fokus auf geringe Fehlerquote"
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 6.2 Anbieterauswahl (Teil 5)",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "6.2",
+  "section_title": "Anbieterauswahl",
+  "sentences": [
+   "• persönliche Kundenbetreuung",
+   "• Schutz durch Vorgabe, Änderungen nur schriftlich entgegen zu nehmen",
+   "• Echtzeit-Monitoring der DNS-Daten, insbesondere auch von WHOIS-Daten",
+   "• Hilfestellung bei juristischen Fragestellungen rund um die Domainregistrierung, missbräuchlicher Nutzung und markenrechtlichen Aspekten"
+  ]
+ },
+ {
+  "title": "BSI-CS 111 – 6.2 Anbieterauswahl (Teil 6)",
+  "doc_id": "BSI-CS 111",
+  "doc_title": "Sichere Bereitstellung von Domaindienstleistungen",
+  "section": "6.2",
+  "section_title": "Anbieterauswahl",
+  "sentences": [
+   "Unternehmen sollten daher einen Registrar wählen, der zu dem von ihnen ermittelten Schutzbedarf passt und entsprechende Dienstleistungen anbietet.",
+   "Die kurzfristige Erreichbarkeit eines Ansprechpartners im Unternehmen bei Problemen und Störungen durch den Registrar sollte rund um die Uhr sichergestellt sein.",
+   "Es sollte mit dem Registrar eine detaillierte Vereinbarung getroffen werden, wer bei Domainänderungen zu informieren ist."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – Einleitung",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": null,
+  "section_title": "Einleitung",
+  "sentences": [
+   ""
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 1 Ausgangslage (Teil 1)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "1",
+  "section_title": "Ausgangslage",
+  "sentences": [
+   "Aktuelle Server-Hardware ist so leistungsfähig, dass klassische Server-Installationen, auf denen eine Applikation pro physischem Server läuft, die Hardware-Ressourcen oftmals nicht auslasten.",
+   "Daher wird Virtualisierung eingesetzt, um die Hardware effizienter zu nutzen, d. h. um Energie und Platz in den Rechenzentren und damit Kosten zu sparen.",
+   "Gleichzeitig kann die erforderliche Bereitstellungszeit von Systemen durch den Einsatz von Virtualisierung massiv reduziert und zusätzlich die Verfügbarkeit durch die Entkopplung von Systemen und Hardware gesteigert werden.",
+   "Insbesondere bei der Konsolidierung und Zusammenführung von Informationstechnik bei Hosting Providern gibt es aufgrund der rechnerischen Anzahl der benötigten Server keine handhabbare und wirtschaftliche Alternative zu virtuellen Servern.",
+   "Durch den Einsatz von Virtualisierung werden IT-Systeme, die bislang auf unterschiedlichen physischen Servern realisiert waren, auf einer Hardware-Plattform zusammengefasst.",
+   "Eine Virtualisierungsumgebung stellt den IT-Systemen virtuelle Hardware zur Verfügung, auf der die IT-Systeme, auch Gast-Systeme genannt, ausgeführt werden.",
+   "Weiterhin sorgt die Virtualisierungsumgebung für ausgeglichene Ressourcenzuteilung, für die Separierung der Gast-Betriebssysteme sowie für die Separierung der Gast-Systeme von der unterliegenden Virtualisierungsumgebung, auch Host-System genannt."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 1 Ausgangslage (Teil 2)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "1",
+  "section_title": "Ausgangslage",
+  "sentences": [
+   "Läuft auf der Hardware nur die Virtualisierungsumgebung, wird diese Bare-metal Hypervisor genannt (siehe Abbildung 1).",
+   "Gast VM Gast Gast VM VM Hypervisor Hardware Virtualisierung ist zudem eine der entscheidenden Grundlagen des Cloud Computings, da virtuelle Server automatisiert und deutlich schneller als physische Server aufgesetzt und bereitgestellt werden können."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 2 Ziel der Empfehlung",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "2",
+  "section_title": "Ziel der Empfehlung",
+  "sentences": [
+   "Diese Empfehlung richtet sich an Verantwortliche für die Planung und den Betrieb von IT-Infrastrukturen sowie an Betreiber von IT-Rechenzentren.",
+   "Sie beinhaltet produktunabhängige Empfehlungen zum sicheren Einsatz von Server-Virtualisierungsprodukten, die als Baremetal-Hypervisoren eingesetzt werden.",
+   "Bei Bare-metal-Hypervisoren laufen neben dem Hypervisor keine anderen Anwendungen auf der physischen Hardware.",
+   "Der Hypervisor ist ein speziell für Virtualisierung optimiertes Betriebssystem."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 3 Abgrenzung (Teil 1)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "3",
+  "section_title": "Abgrenzung",
+  "sentences": [
+   "Dieses Dokument beinhaltet Empfehlungen zur Server-Virtualisierung, es geht nicht auf Cloud-Techniken und -Produkte ein.",
+   "Ansatzweise werden Empfehlungen zur Netz- und Speicher-Virtualisierung sowie deren Konfiguration gegeben.",
+   "Durch das Zusammenfassen mehrerer Server auf einer Hardware muss diese unter Umständen physisch besser abgesichert werden, als ein einzelner Server.",
+   "Werden z. B. Rechenzentren zusammengelegt, muss die physische Absicherung insgesamt anhand der Rechner mit dem höchsten Schutzbedarf erfolgen (siehe auch IT-GS 200-2, Abschnitt 8.2.4).",
+   "Zu dieser physischen Absicherung der IT-Infrastruktur werden im Dokument keine weiteren Angaben gemacht.",
+   "Ebenfalls nicht betrachtet werden Client-, Desktop- und Applikations-Virtualisierung.",
+   "Es werden auch keine Compliance-Themen wie z. B. Lizenz-Management behandelt."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 3 Abgrenzung (Teil 2)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "3",
+  "section_title": "Abgrenzung",
+  "sentences": [
+   "Der Einsatz von Virtualisierung von Sicherheitskomponenten, die dem Perimeterschutz dienen (insbesondere in einer DMZ), wird hier nicht betrachtet.",
+   "Die hier definierten Kriterien sind in solchen Szenarien nicht anwendbar."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 4 Server-Virtualisierung aus Sicherheitssicht (Teil 1)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "4",
+  "section_title": "Server-Virtualisierung aus Sicherheitssicht",
+  "sentences": [
+   "Virtualisierte Systeme bringen neue Anforderungen mit sich, die bei der Absicherung einer IT-Infrastruktur berücksichtigt werden müssen.",
+   "Bei einem klassischen physischen Server lassen sich Sicherheitsmaßnahmen noch weitestgehend losgelöst von z. B. der Netzwerk-Sicherheit umsetzen.",
+   "Durch Virtualisierung wird eine zusätzliche virtuelle Hardware-Schicht eingeführt, so dass mehrere Server auf einer physischen Hardware betrieben werden können.",
+   "Meistens ist bereits dann eine separate Management-Software nötig, um sowohl die virtuelle Umgebung als auch die virtuellen Maschinen zu administrieren.",
+   "Die Netzanbindung erfolgt häufig durch virtuelle Netzkomponenten, die ggf. Bestandteil des Hypervisors sind.",
+   "Generell gilt, dass die bei klassischen IT-Systemen und Netzen vorhandene physische Trennung zu Gunsten einer logischen Trennung aufgehoben wird.",
+   "Physische Server, auf denen eine Virtualisierungsumgebung läuft, werden meistens nicht stand-alone betrieben, sondern sind von der IT-Infrastruktur, in die sie eingebettet sind, abhängig."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 4 Server-Virtualisierung aus Sicherheitssicht (Teil 2)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "4",
+  "section_title": "Server-Virtualisierung aus Sicherheitssicht",
+  "sentences": [
+   "Meistens werden sie mit anderen Servern zu Clustern zusammengeschlossen.",
+   "Dadurch wird eine Steigerung der Verfügbarkeit der Gast-Systeme erreicht, da die virtuellen Maschinen zwischen den physischen Servern im laufenden Betrieb verschoben werden können (Live-Migration).",
+   "Zudem wird die Administration vereinfacht, die in einer virtualisierten Infrastruktur üblicherweise aus einer separaten Management-Umgebung durchgeführt wird.",
+   "Als Speicherort für die virtuellen Maschinen sowie deren virtuellen Festplatten und deren Konfiguration wird meistens ein zentraler Massenspeicher (SAN oder NAS) eingesetzt.",
+   "Dieser Aufbau der IT-Infrastruktur hat Konsequenzen für die Vernetzung der IT-Systeme:",
+   "neben dem Managementnetz gibt es die Anbindung des Massenspeichers, das Produktivnetz der Gast-Systeme sowie das Netz, das Virtualisierungsumgebungen untereinander nutzen, über das z. B. Live Migration realisiert wird (siehe auch den Abschnitt „Vernetzung“)."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 4 Server-Virtualisierung aus Sicherheitssicht (Teil 3)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "4",
+  "section_title": "Server-Virtualisierung aus Sicherheitssicht",
+  "sentences": [
+   "Bezüglich Sicherheit bietet die Virtualisierung einer IT-Infrastruktur folgende Vorteile:",
+   "• Höhere Ausfallsicherheit durch die Clusterbildung der Hosts",
+   "• Verwendung von Templates zur Bereitstellung von aktuellen gepatchten und standardisierten IT-Systemen",
+   "• Zentrales Management, dadurch weniger Administrationsaufwand (die Server werden zentral angelegt, gestartet, gestoppt, modifiziert, vernetzt, überwacht und entsorgt)",
+   "• Die IT-Infrastruktur ist leichter skalierbar und erweiterbar",
+   "• Unabhängigkeit von konkret eingesetzter Hardware"
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 4 Server-Virtualisierung aus Sicherheitssicht (Teil 4)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "4",
+  "section_title": "Server-Virtualisierung aus Sicherheitssicht",
+  "sentences": [
+   "Folgende Nachteile hat eine virtualisierte Infrastruktur aus Sicherheitssicht:",
+   "• Es wird eine zusätzliche Software-Schicht eingeführt, die Fehler enthalten kann und abgesichert werden muss.",
+   "• Eine virtuelle Trennung von Servern besitzt eine geringere Mechanismenstärke gegenüber einer physischen Trennung, d. h. das Sicherheitsniveau ist niedriger.",
+   "• Durch die Installation von Gastwerkzeugen im Gast-Betriebssystem werden zusätzliche virtuelle Treiber und Hardware eingeführt, die eine weitere Angriffsfläche bieten.",
+   "• Neben den virtualisierten Servern gibt es üblicherweise noch eine virtualisierte Netzwerk-Ebene, die zusätzliche Komplexität erzeugt.",
+   "• Das zentrale Management wird zum attraktiven Angriffspunkt.",
+   "• Die Fehlkonfiguration der Virtualisierungsumgebung hat weitreichendere Auswirkungen als die Fehlkonfiguration eines einzigen Servers"
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 4 Server-Virtualisierung aus Sicherheitssicht (Teil 5)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "4",
+  "section_title": "Server-Virtualisierung aus Sicherheitssicht",
+  "sentences": [
+   "• Die Konsolidierung der IT zieht meist eine Reduzierung des Administrationspersonals nach sich. Dadurch vergrößert sich der Verantwortungsbereich für die einzelnen Personen."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 5 Einordnung in die IT-Infrastruktur (Teil 1)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "5",
+  "section_title": "Einordnung in die IT-Infrastruktur",
+  "sentences": [
+   "Es wird davon ausgegangen, dass es in der Organisation ein Sicherheitskonzept und -prozesse gibt, in die die Absicherung von Virtualisierungsumgebungen eingebettet wird.",
+   "Folgende Maßnahmen werden vorausgesetzt:"
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 5 Einordnung in die IT-Infrastruktur (Teil 2)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "5",
+  "section_title": "Einordnung in die IT-Infrastruktur",
+  "sentences": [
+   "• Die Hardware für die Virtualisierungsumgebung muss hinsichtlich Leistung und Performance ausreichend dimensioniert sein. Hierbei sollten die Empfehlungen des Herstellers berücksichtigt werden. Aus Verfügbarkeitsgründen müssen redundante Systeme sowohl für die Server-Hardware als auch die Netzanbindung geplant werden. Speicherplatz und Management-Umgebung müssen ebenfalls ausreichend dimensioniert sein.",
+   "• Beim Einsatz von Blade-Systemen ist es systembedingt nicht möglich, eine physische"
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 5 Einordnung in die IT-Infrastruktur (Teil 3)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "5",
+  "section_title": "Einordnung in die IT-Infrastruktur",
+  "sentences": [
+   "Trennung des Netzverkehrs vorzunehmen, da es bei diesen Systemen nur eine Backplane gibt, die alle Blades mit dem Interconnect-Switch verbindet.",
+   "Zudem gibt es häufig nur noch zwei Netzwerk-Schnittstellen in das Gehäuse, über die jeglicher Netzverkehr geleitet werden muss.",
+   "Blade-Systeme sind daher (s. u.) für den Einsatz bei sehr hohem Schutzbedarf nicht geeignet."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 5 Einordnung in die IT-Infrastruktur (Teil 4)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "5",
+  "section_title": "Einordnung in die IT-Infrastruktur",
+  "sentences": [
+   "• In der Organisation sind regelmäßige Updates gewährleistet z. B. durch ein Patch- und",
+   "Änderungsmanagement.",
+   "Für virtualisierte Umgebungen ist darauf zu achten, dass nicht nur die Gast-Betriebssysteme, sondern auch der Hypervisor, die Management-Umgebung und evtl. genutzte Gastwerkzeuge in das Patchmanagement integriert sind."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 5 Einordnung in die IT-Infrastruktur (Teil 5)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "5",
+  "section_title": "Einordnung in die IT-Infrastruktur",
+  "sentences": [
+   "• Die bisherigen Abläufe für Backup und Restore müssen erweitert werden, um sowohl die virtuellen Maschinen als auch die Konfiguration des Hypervisors zu berücksichtigen. Zu beachten ist, dass auch die Management-Umgebung an das Backup angeschlossen wird, hier insbesondere die Konfigurationseinstellungen der virtuellen Maschinen",
+   "(z. B. durch eine Sicherung der Datenbank der Management-Umgebung).",
+   "Weiterhin muss geprüft werden, ob in der Organisation vorhandene Backup- und Restore-Konzepte und -Produkte für den Einsatz in einer virtualisierten Infrastruktur geeignet sind.",
+   "müssen neue Verfahren etabliert und neue Produkte eingeführt werden."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 5 Einordnung in die IT-Infrastruktur (Teil 6)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "5",
+  "section_title": "Einordnung in die IT-Infrastruktur",
+  "sentences": [
+   "• Monitoring, Logging, Intrusion Detection und Verhinderung von Datenabfluss muss sowohl für die VMs als auch den Hypervisor gewährleistet sein.",
+   "• Das Netz- bzw. Zonenkonzept muss an die veränderte Umgebung angepasst werden."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 5 Einordnung in die IT-Infrastruktur (Teil 7)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "5",
+  "section_title": "Einordnung in die IT-Infrastruktur",
+  "sentences": [
+   "Durch den Einsatz von Server-Virtualisierung ändert sich der Netzverkehr von der streng hierarchischen Nord-Süd-Ausrichtung hin zur Ost-West-Richtung.",
+   "Gemeint sind die Netzverbindungen zwischen den (virtuellen) Servern (Ost-West), die u. U. nicht mehr über externe Netzkomponenten (Nord-Süd) geleitet werden.",
+   "Dementsprechend müssen auch die Sicherheitskomponenten angepasst werden (siehe auch Kapitel 8)."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 5 Einordnung in die IT-Infrastruktur (Teil 8)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "5",
+  "section_title": "Einordnung in die IT-Infrastruktur",
+  "sentences": [
+   "• Es muss ein Speicher-Konzept vorliegen. Durch den Einsatz der Server-Virtualisierung entstehen auch in diesem Bereich neue Strukturen, da aus Verfügbarkeitsgründen meist ein zentraler Speicher verwendet wird, in dem die virtuellen Maschinen liegen. Diese müssen ggf. voneinander isoliert werden und die korrekte und zuverlässige Netzanbindung muss gewährleistet sein. Je nach Virtualisierungsumgebung kann die virtuelle Maschine z. B. als Verzeichnis mit Plattenimage und Konfigurationsdatei realisiert sein oder aber nur als Image-Datei, deren Konfigurationsoptionen in der Management-Umgebung vorgehalten werden. Unabhängig von der Realisierung sieht das Gast-Betriebssystem einfach eine gewöhnliche Festplatte."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 6 Konzeption der Virtualisierungsumgebung (Teil 1)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "6",
+  "section_title": "Konzeption der Virtualisierungsumgebung",
+  "sentences": [
+   "Virtualisierung bedeutet eine Konsolidierung der Server, d. h. die Möglichkeit mehrere Server virtuell auf einem physischen Host zu betreiben.",
+   "Die Server unterliegen unterschiedlichem Schutzbedarf aufgrund der verschiedenen Anwendungen und Dienste, die darauf laufen.",
+   "Daher muss vor einer Virtualisierung festgelegt werden, welche Dienste oder Anwendungen zusammen in einer virtuellen Umgebung betrieben werden dürfen und welche durch geeignete Maßnahmen separiert werden müssen.",
+   "Da sich Separierung durch alle Bereiche einer IT-Infrastruktur fortsetzen muss, werden neben dem Bereich „Compute“ auch die Bereiche „Network“, „Storage“ und „Management“ betrachtet.",
+   "Zonenkonzept: Die Server sollten aus organisatorischer Sicht und aus Sicherheitssicht sinnvoll in Zonen gruppiert werden; Zonen sollten nicht zusammen mit der Sicherheitskomponente virtualisiert werden, die für die Separierung der Zonen sorgt.",
+   "Was zusammen auf einer gemeinsamen physischen Hardware virtualisiert werden kann, ist abhängig von Schutzbedarf und Bedarfsträger.",
+   "Bedarfsträger können unterschiedliche Mandanten (Hosting-Szenarien), unterschiedliche Organisationseinheiten innerhalb eines Unternehmens oder einer Organisation oder unterschiedliche Verfahren sein."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 6 Konzeption der Virtualisierungsumgebung (Teil 2)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "6",
+  "section_title": "Konzeption der Virtualisierungsumgebung",
+  "sentences": [
+   "Der in Tabelle 1 dargestellte Schutzbedarf zielt primär auf die Gewährleistung des Schutzziels Vertraulichkeit und erst in zweiter Linie auf die Verfügbarkeit und Integrität.",
+   "Tabelle 1, Nr. 1: Die Kombination (1 normal, 1 normal) erfordert die Basis-Separierung.",
+   "Tabelle 1, Nr. 2: Die Kombination (1 normal, 1 hoch) erfordert eine durchgängige logische Separierung.",
+   "Tabelle 1, Nr. 3: Die Kombination (1 normal, 1 sehr hoch) erfordert eine Einzelfallbetrachtung.",
+   "Tabelle 1, Nr. 4: Die Kombination (1 hoch, 1 hoch) erfordert eine durchgängige logische Separierung.",
+   "Tabelle 1, Nr. 5: Die Kombination (1 normal, 2 normal) erfordert eine durchgängige logische Separierung; sind die Bedarfsträger unterschiedliche juristische Personen, sollte der Netzverkehr physisch separiert werden."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 6 Konzeption der Virtualisierungsumgebung (Teil 3)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "6",
+  "section_title": "Konzeption der Virtualisierungsumgebung",
+  "sentences": [
+   "Tabelle 1, Nr. 6: Die Kombination (1 normal, 2 hoch) erfordert eine durchgängige logische Separierung sowie in Teilen physische Separierung.",
+   "Tabelle 1, Nr. 7: Die Kombination (1 normal, 2 sehr hoch) erfordert eine physische Separierung.",
+   "Tabelle 1, Nr. 8: Die Kombination (1 hoch, 2 hoch) erfordert eine durchgängige logische Separierung sowie in Teilen physische Separierung.",
+   "Tabelle 1, Nr. 9: Die Kombination (1 sehr hoch, 2 sehr hoch) erfordert eine physische Separierung.",
+   "Bei den Szenarien, die nur einen Bedarfsträger betrachten, ist die Kommunikation zwischen verschiedenen Schutzzonen durch eine Firewall abzusichern."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 6.1 Risikobetrachtung (Teil 1)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "6.1",
+  "section_title": "Risikobetrachtung",
+  "sentences": [
+   "Für die in der Konzeption angeführten Maßnahmen wird jeweils die Schutzwirkung und das verbleibende Restrisiko beschrieben.",
+   "Dedizierter virtueller Switch: Virtuelle Switche sind separate Objekte im Speicher der Virtualisierungsumgebung, dadurch wird eine Isolation erreicht; Restrisiko sind ausnutzbare Fehler in der Software.",
+   "Zonenkonzept: Zonen lassen sich sowohl aus organisatorischer als auch sicherheitstechnischer Sicht klassifizieren, es können Regeln für die Kommunikation zwischen Zonen festgelegt und den Zonen bestimmte Sicherheitseigenschaften zugewiesen werden; Restrisiko ist, dass eine unklare Konzeption zu Sicherheitsrisiken führt."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 6.1 Risikobetrachtung (Teil 2)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "6.1",
+  "section_title": "Risikobetrachtung",
+  "sentences": [
+   "Getrennte Instanzen der Management-Umgebung: Wird eine Management-Umgebung kompromittiert, ist nicht gleich die ganze virtuelle Infrastruktur kompromittiert; Restrisiko ist, dass alle Management-Umgebungen kompromittiert werden, z. B. durch Ausnutzung der gleichen Schwachstelle.",
+   "Gastwerkzeuge vermeiden: Gastwerkzeuge weichen durch ihre Paravirtualisierungsfunktion die Trennung sowohl von Virtualisierungsumgebung und VMs als auch die Trennung zwischen VMs auf; Restrisiko ist, dass sie wegen deutlicher Performance-Einbußen doch in Teilen installiert werden.",
+   "Logische Separierung innerhalb des Managements anhand von Rollen (RBAC), kombiniert mit Gruppierungen der verwalteten Komponenten: Für Gruppen können Berechtigungen vergeben werden, die an Rollen gebunden sind, und es ist zu verhindern, dass ein Administrator alles darf bzw. Änderungen nicht nachvollzogen werden können; Restrisiko sind Fehler durch falsche Zuordnungen."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 6.1 Risikobetrachtung (Teil 3)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "6.1",
+  "section_title": "Risikobetrachtung",
+  "sentences": [
+   "LUN-Binding und LUN-Masking: Sie verhindern, dass jeder Rechner, der in einer Speicherzone mit einem Speichersystem stationiert ist, alle logischen oder physischen Platten dieses Systems sieht; Restrisiko sind ausnutzbare Fehler in der Software.",
+   "Physisch getrennte Hypervisoren: Durch die physische Trennung wird eine sehr gute Isolierung erreicht, trotzdem kann eine Virtualisierung der Server durchgeführt werden; Restrisiko ist, dass immer noch Angriffe über die Netzkomponenten erfolgen können.",
+   "Physische NIC pro virtuellem Switch: Netzverkehr wird nicht zusammengeführt; Restrisiko sind ausnutzbare Fehler im virtuellen Switch."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 6.1 Risikobetrachtung (Teil 4)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "6.1",
+  "section_title": "Risikobetrachtung",
+  "sentences": [
+   "RBAC in der Management-Umgebung: Der Zugriff auf das Management ist abhängig von Rollen, nicht von Personen, sodass bei Abwesenheit oder Wechsel von Personal nur die Zuordnung von Personen zu Rollen geändert werden muss; Restrisiko ist die falsche Zuordnung von Personen zu Rollen sowie Fehler im eingesetzten Produkt.",
+   "Soft-Zoning: Durch Soft-Zoning sehen sich nur Geräte der gleichen Speicherzone, auf diese Weise kann eine Gruppierung vorgenommen werden; Restrisiko ist, dass WWN-Spoofing und Datenübertragungen zu gültigen WWNs nicht verhindert werden.",
+   "Verschlüsselung der Daten (in-motion und at-rest): Daten sind für Unbefugte nicht lesbar; Restrisiko sind ausnutzbare Fehler in der Software, zu schwache Kryptographie und unzureichendes Schlüsselmanagement."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 6.1 Risikobetrachtung (Teil 5)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "6.1",
+  "section_title": "Risikobetrachtung",
+  "sentences": [
+   "VSAN: Ein VSAN erweitert das Konzept des Soft-Zonings und bietet sowohl einen besseren Zugriffsschutz auf die Daten und Applikationen als auch Schutz vor einer breiteren Wirkung von Störungen, die so auf einen Teil des Netzes begrenzt werden können; Restrisiko sind ausnutzbare Fehler in der Software."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 6.2 Separierungsstufen (Tabelle 2) (Teil 1)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "6.2",
+  "section_title": "Separierungsstufen (Tabelle 2)",
+  "sentences": [
+   "Tabelle 2 differenziert die vier Separierungsstufen für die Bereiche Compute, Network, Storage und Management aus.",
+   "Basis-Separierung, Compute: VMs zusammen auf einem Hypervisor, Gastwerkzeuge erlaubt.",
+   "Basis-Separierung, Network: VMs dürfen über einen gemeinsamen (virtuellen) Switch angebunden werden, Netzseparierung über Access Control Lists."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 6.2 Separierungsstufen (Tabelle 2) (Teil 2)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "6.2",
+  "section_title": "Separierungsstufen (Tabelle 2)",
+  "sentences": [
+   "Basis-Separierung, Storage: LUN-Binding und LUN-Masking.",
+   "Basis-Separierung, Management: eine gemeinsame Management-Umgebung.",
+   "Durchgängige logische Separierung, Compute: VMs zusammen auf einem Hypervisor, keine Gastwerkzeuge erlaubt."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 6.2 Separierungsstufen (Tabelle 2) (Teil 3)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "6.2",
+  "section_title": "Separierungsstufen (Tabelle 2)",
+  "sentences": [
+   "Durchgängige logische Separierung, Network: VMs dürfen über einen gemeinsamen virtuellen Switch angebunden werden, Separierung der Netze über VLANs (virtueller Switch ist VLAN-Trunk).",
+   "Durchgängige logische Separierung, Storage: LUN-Binding, LUN-Masking und Hard-Zoning.",
+   "Durchgängige logische Separierung, Management: logische Separierung innerhalb des Managements anhand von Rollen (RBAC)."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 6.2 Separierungsstufen (Tabelle 2) (Teil 4)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "6.2",
+  "section_title": "Separierungsstufen (Tabelle 2)",
+  "sentences": [
+   "Durchgängige logische Separierung sowie in Teilen physische Separierung, Compute: VMs zusammen auf einem Hypervisor, keine Gastwerkzeuge erlaubt.",
+   "Durchgängige logische Separierung sowie in Teilen physische Separierung, Network: VMs müssen an dedizierte virtuelle Switche angeschlossen werden, die jeweils über eigene physische Netzwerkkarten angebunden sind, physischer Switch ist VLAN-Trunk.",
+   "Durchgängige logische Separierung sowie in Teilen physische Separierung, Storage: Segmentierung des SANs (VSAN im Sinne des IT-GS), Hard-Zoning, LUN-Binding, LUN-Masking."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 6.2 Separierungsstufen (Tabelle 2) (Teil 5)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "6.2",
+  "section_title": "Separierungsstufen (Tabelle 2)",
+  "sentences": [
+   "Durchgängige logische Separierung sowie in Teilen physische Separierung, Management: Separierung von Netz-, Server- und Speicher-Administration.",
+   "Physische Separierung, Compute: physisch getrennte Hypervisoren oder physische Server.",
+   "Physische Separierung, Network: physische Trennung aller Netze; VMs müssen an dedizierte virtuelle Switche angeschlossen werden, die jeweils über eigene physische Netzwerkkarten angebunden sind, VLANs innerhalb der Umgebung eines Bedarfsträgers sind erlaubt wenn nötig."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 6.2 Separierungsstufen (Tabelle 2) (Teil 6)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "6.2",
+  "section_title": "Separierungsstufen (Tabelle 2)",
+  "sentences": [
+   "Physische Separierung, Storage: Verschlüsselung von data-in-motion und data-at-rest ODER physisch getrenntes Netz sowie Speicherlösung.",
+   "Physische Separierung, Management: getrennte Instanzen der Managementumgebung.",
+   "Einzelfallbetrachtung: Ob eine Zusammenlegung möglich ist, kann nicht pauschal festgelegt werden, sondern muss für jede Spalte einzeln geprüft werden."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 7 Absicherung von Virtualisierungsumgebungen",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "7",
+  "section_title": "Absicherung von Virtualisierungsumgebungen",
+  "sentences": [
+   "Verschiedene Maßnahmen tragen zur Absicherung von Virtualisierungsumgebungen bei.",
+   "Diese sind im Folgenden aufgeführt, zugeordnet zu Hypervisor und VM sowie zu den Gast-Betriebssystemen."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 7.1 Hypervisor und virtuelle Maschinen (Teil 1)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "7.1",
+  "section_title": "Hypervisor und virtuelle Maschinen",
+  "sentences": [
+   "Der Hypervisor übernimmt die Ressourcenverwaltung und -zuteilung für die virtuellen Maschinen.",
+   "Aus Sicherheitssicht ist er zudem zuständig für die Isolierung der VMs untereinander.",
+   "Es muss verhindert werden, dass ein nicht zulässiger Informationsfluss zwischen den virtuellen Maschinen besteht, sei es durch gemeinsam genutzte Ressourcen oder durch Mitlesen des Netzverkehrs.",
+   "Folgende Maßnahmen tragen zur Sicherheit einer Virtualisierungsumgebung bei."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 7.1 Hypervisor und virtuelle Maschinen — Härtung und Minimierung des Systems",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "7.1",
+  "section_title": "Hypervisor und virtuelle Maschinen",
+  "sentences": [
+   "Härtung und Minimierung des Systems",
+   "• Aktuelle, minimierte und standardisierte Installations-Images für die Virtualisierungsumgebung erzeugen.",
+   "• Konfigurationsvorgaben des Herstellers hinsichtlich Sicherheit umsetzen.",
+   "• Integrität der Installations-Images sicherstellen und prüfen.",
+   "• Schnittstellen auf ein Minimum reduzieren, um die Angriffsfläche zu reduzieren."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 7.1 Hypervisor und virtuelle Maschinen — Cluster-Bildung",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "7.1",
+  "section_title": "Hypervisor und virtuelle Maschinen",
+  "sentences": [
+   "Cluster-Bildung",
+   "• Bei Cluster-Bildung Hardware-Anforderungen beachten (z. B. CPU-Typen). Auf korrekte"
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 7.1 Hypervisor und virtuelle Maschinen (Teil 4)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "7.1",
+  "section_title": "Hypervisor und virtuelle Maschinen",
+  "sentences": [
+   "Konfiguration der beteiligten Hosts achten.",
+   "Braucht ein Gast-System spezielle Hardware, muss diese in allen physischen Servern vorliegen, auf die dessen VM durch Live-Migration verschoben werden kann."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 7.1 Hypervisor und virtuelle Maschinen (Teil 5)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "7.1",
+  "section_title": "Hypervisor und virtuelle Maschinen",
+  "sentences": [
+   "• Verfügbarkeitsmechanismen der Virtualisierungsumgebung wie Failover und Lastverteilung aktivieren (setzt Clusterbildung von Hosts voraus).",
+   "Virtuelle Hardware der virtuellen Maschine"
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 7.1 Hypervisor und virtuelle Maschinen (Teil 6)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "7.1",
+  "section_title": "Hypervisor und virtuelle Maschinen",
+  "sentences": [
+   "• Minimierung des Systems, in dem den VMs nur die benötigte (virtuelle) Hardware zugewiesen wird und nicht benötigte Schnittstellen und Interfaces wie USB oder Sound abgeschaltet werden.",
+   "• Ab hohem Schutzbedarf sollten Ressourcen-Zuweisungen statisch erfolgen sowie der"
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 7.1 Hypervisor und virtuelle Maschinen (Teil 7)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "7.1",
+  "section_title": "Hypervisor und virtuelle Maschinen",
+  "sentences": [
+   "Ressourcenverbrauch begrenzt werden.",
+   "Dies gilt sowohl für den Netzverkehr, die Kapazität der virtuellen Festplatte sowie den Arbeitsspeicher.",
+   "Dies gewährleistet, dass alle VMs die benötigten Ressourcen ausreichend zur Verfügung haben.",
+   "Kommunikation zwischen virtuellen Maschinen bzw. zwischen VM und Hypervisor"
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 7.1 Hypervisor und virtuelle Maschinen (Teil 8)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "7.1",
+  "section_title": "Hypervisor und virtuelle Maschinen",
+  "sentences": [
+   "• Paravirtualisierte Treiber und Hardware sollten vermieden werden. Bei der Paravirtualisierung greift das Gast-Betriebssystem über Hypercalls direkt auf privilegierte Ressourcen zu. Dies weicht die Isolierung zwischen VM und Hypervisor auf.",
+   "• Alle Schnittstellen, die einen Austausch von Informationen zwischen Host und Gast ermöglichen, sollten ausgeschaltet werden.",
+   "• Alle Schnittstellen, die die Kommunikation von virtuellen Maschinen untereinander ermöglichen, sollten ausgeschaltet werden."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 7.1 Hypervisor und virtuelle Maschinen (Teil 9)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "7.1",
+  "section_title": "Hypervisor und virtuelle Maschinen",
+  "sentences": [
+   "Lebenszyklus von virtuellen Maschinen Für virtuelle Maschinen sollte ein Lebenszyklus entworfen werden, der Folgendes umfasst:",
+   "• Klare Regeln und Kriterien, wann eine VM angelegt und gestartet werden darf (Vermeidung von VM-Wildwuchs).",
+   "• VMs bzw. deren Gast-Betriebssysteme, müssen in das Patch- und Änderungsmanagement eingebunden sein, damit ein aktueller Patch-Stand gewährleistet ist. Auch für ausgeschaltete VMs müssen aktuelle Betriebssystem-Versionen gewährleistet sein.",
+   "• Festlegung, ob Kopien einer VM (z. B. in Form von Snapshots) gemacht werden dürfen."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 7.1 Hypervisor und virtuelle Maschinen (Teil 10)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "7.1",
+  "section_title": "Hypervisor und virtuelle Maschinen",
+  "sentences": [
+   "Protokollierung und Verzeichnis von allen Kopien, damit zu jedem Zeitpunkt klar ist, wo sich welche Kopien der VMs befinden.",
+   "• Lebensdauer einer VM festlegen, geregelte und nachvollziehbare Löschung nicht mehr benötigter VMs."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 7.1 Hypervisor und virtuelle Maschinen — Konfiguration der Netzanbindung im Hypervisor",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "7.1",
+  "section_title": "Hypervisor und virtuelle Maschinen",
+  "sentences": [
+   "Konfiguration der Netzanbindung im Hypervisor",
+   "• Host-Firewall einrichten: Verbindungen nur aus und in die vorgesehenen Netze zulassen. Dies schützt allerdings nicht die Kommunikation von und zu den Gast-Systemen.",
+   "• Konfiguration des Hypervisors, sodass VMs nicht gegenseitig ihre Pakete sehen.",
+   "• Konfiguration der (virtuellen) Netzkomponenten, sodass VLAN-Hopping verhindert wird (vgl. Anhang des Dokuments [VLAN]).",
+   "• Durch hypervisor-interne Vernetzung dürfen externe Sicherheits-Komponenten wie"
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 7.1 Hypervisor und virtuelle Maschinen (Teil 12)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "7.1",
+  "section_title": "Hypervisor und virtuelle Maschinen",
+  "sentences": [
+   "Firewalls nicht umgangen werden.",
+   "• Getrennte physische Netze für Produktivbetrieb und Management (siehe auch Abschnitt „Vernetzung“)."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 7.1 Hypervisor und virtuelle Maschinen (Teil 13)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "7.1",
+  "section_title": "Hypervisor und virtuelle Maschinen",
+  "sentences": [
+   "Administration des Hypervisors Im Folgenden wird auf einige hypervisor-spezifische Aspekte der Administration einer virtuellen Infrastruktur eingegangen.",
+   "Weitere allgemeine Empfehlungen stehen im Abschnitt „Management“."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 7.1 Hypervisor und virtuelle Maschinen (Teil 14)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "7.1",
+  "section_title": "Hypervisor und virtuelle Maschinen",
+  "sentences": [
+   "• Meistens gibt es viele Möglichkeiten, Konfigurationsänderungen auf dem Hypervisor durchzuführen, z. B. über die Management-Umgebung, lokal in einer Konsole auf dem physischen Rechner oder automatisiert über Skripte. Es sollte festgelegt werden, welche",
+   "Schnittstellen genutzt werden dürfen, alle anderen sollten deaktiviert werden."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 7.1 Hypervisor und virtuelle Maschinen (Teil 15)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "7.1",
+  "section_title": "Hypervisor und virtuelle Maschinen",
+  "sentences": [
+   "• Der Zugriff sollte durch die Festlegung von Rollen und Zuordnung von Rechten zu Rollen geregelt werden.",
+   "• Der Personenkreis, der Konfigurationsänderungen durchführen darf, sollte so klein wie möglich sein. Es sollten Rechte an Rollen gebunden werden und dann Personen den"
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 7.1 Hypervisor und virtuelle Maschinen (Teil 16)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "7.1",
+  "section_title": "Hypervisor und virtuelle Maschinen",
+  "sentences": [
+   "Rollen zugeordnet werden."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 7.1 Hypervisor und virtuelle Maschinen (Teil 17)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "7.1",
+  "section_title": "Hypervisor und virtuelle Maschinen",
+  "sentences": [
+   "• Änderungen durch die Administratoren sollten geeignet protokolliert werden.",
+   "• Die Kommunikation mit dem Hypervisor sollte durch Verschlüsselung und Authentisierung gesichert sein.",
+   "• Grundlage für die Verschlüsselung und Authentisierung sollten Zertifikate sein, die einem Zertifikats-Management unterliegen.",
+   "• Die Konfigurationseinstellungen sollten gesichert werden und deren Wiederherstellung einfach möglich sein."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 7.2 Absicherung der Gast-Betriebssysteme (Teil 1)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "7.2",
+  "section_title": "Absicherung der Gast-Betriebssysteme",
+  "sentences": [
+   "Die Gewährleistung der IT-Sicherheit muss sich in den Gast-Betriebssystemen hin zu den Applikationen fortsetzen.",
+   "Aus Sicht der Virtualisierungsumgebung kann dies durch folgende Maßnahmen unterstützt werden:"
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 7.2 Absicherung der Gast-Betriebssysteme (Teil 2)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "7.2",
+  "section_title": "Absicherung der Gast-Betriebssysteme",
+  "sentences": [
+   "• Templates mit aktuellen gehärteten Gast-Betriebssystemen zum Aufsetzen von neuen",
+   "Servern verwenden."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 7.2 Absicherung der Gast-Betriebssysteme (Teil 3)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "7.2",
+  "section_title": "Absicherung der Gast-Betriebssysteme",
+  "sentences": [
+   "• Es müssen alle Absicherungen durchgeführt werden, die auch für physisch realisierte",
+   "Server gelten, z. B. die Installation von Sicherheitskomponenten, wie lokale Firewalls oder Antiviren-Software."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 7.2 Absicherung der Gast-Betriebssysteme (Teil 4)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "7.2",
+  "section_title": "Absicherung der Gast-Betriebssysteme",
+  "sentences": [
+   "• Gast-Werkzeuge und paravirtualisierte Treiber weichen die Trennung zwischen VM und"
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 7.2 Absicherung der Gast-Betriebssysteme (Teil 5)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "7.2",
+  "section_title": "Absicherung der Gast-Betriebssysteme",
+  "sentences": [
+   "Virtualisierungsumgebung auf.",
+   "Daher sollten sie nur eingeschränkt verwendet werden."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 8 Vernetzung (Teil 1)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "8",
+  "section_title": "Vernetzung",
+  "sentences": [
+   "Wie bereits am Anfang des Dokuments erwähnt, hat der Einsatz von Server-Virtualisierung Konsequenzen für die Vernetzung der IT-Systeme.",
+   "Der Netzverkehr ändert sich von streng hierarchischen Nord-Süd-Ausrichtung hin zu vermehrtem Ost-West-Verkehr.",
+   "Durch Abbildung 2 wird dies verdeutlicht.",
+   "Neben dem Managementnetz (in orange in Abbildung 2) gibt es die Anbindung des Massenspeichers (in grün), das Produktivnetz der Gast-Systeme (in blau) sowie das Netz, das Virtualisierungsumgebungen untereinander nutzen (in rot), über das z. B. Live Migration realisiert wird.",
+   "Letzteres verdeutlicht den Ost-West-Verkehr.",
+   "Es entstehen folgende Anforderungen an Netze in virtualisierten Infrastrukturen:"
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 8 Vernetzung (Teil 2)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "8",
+  "section_title": "Vernetzung",
+  "sentences": [
+   "• Es ist eine physische Trennung des Management-Netzes von den anderen Infrastruktur-bildenden Komponenten erforderlich.",
+   "• Das für eine Live-Migration genutzte Netz muss logisch von den anderen Netzen getrennt sein.",
+   "• Sämtliche virtuelle Maschinen müssen über eine redundante Anbindung an den Nord-Süd-Verkehr verfügen."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 9 Management (Teil 1)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "9",
+  "section_title": "Management",
+  "sentences": [
+   "Die Management-Umgebung ist eine besonders schutzbedürftige Umgebung, die durch die inhärente Zentralisierung deutlich an Bedeutung gewonnen hat und damit auch als Angriffsziel attraktiver geworden ist.",
+   "Daher müssen zum Schutz der Management-Umgebung, abhängig von der aufgrund des Schutzbedarfs erforderlichen Separierung, folgende Maßnahmen umgesetzt werden:"
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 9 Management (Teil 2)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "9",
+  "section_title": "Management",
+  "sentences": [
+   "• Trennung der Administration des Hypervisors von der Administration der Gast-Betriebssysteme.",
+   "• Kein Zugriff der Rolle „Gast-Betriebssystem-Administrator“ auf die Virtualisierungs-Management-Umgebung und umgekehrt.",
+   "• Logische Trennung der verschiedenen Administrations-Netze im physischen Administrations-Netz.",
+   "• Rollenbasierte Zugriffskontrolle (Nicht Personen-gebunden) für Administratoren.",
+   "• Jump Host oder physischer Extra-Host für den Zugriff auf die Management-Umgebung mit Mehr-Faktor-Authentisierung.",
+   "• Härtung und Absicherung des IT-Systems, auf dem die Management-Umgebung läuft."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 9 Management (Teil 3)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "9",
+  "section_title": "Management",
+  "sentences": [
+   "• Patch-Zyklen festlegen, auch für ausgeschaltete VMs.",
+   "• Festlegen, welche Management-Schnittstellen und Werkzeuge verwendet werden.",
+   "• Nicht benötigte Management-Zugriffe auf allen Ebenen deaktivieren: Hardware, Hypervisor, VMs, Gast-Betriebssysteme.",
+   "• Auswertung und Überwachung des Loggings, Monitorings, der Intrusion Detection sowie der Lösung zur Verhinderung von Datenabfluss.",
+   "• Regelmäßige Sicherung von Konfigurationseinstellungen, auf allen Ebenen: Hardware,"
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 9 Management (Teil 4)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "9",
+  "section_title": "Management",
+  "sentences": [
+   "Hypervisor, VMs, Gast-Betriebssysteme, Management-Umgebung."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 10 Erklärungen (Teil 1)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "10",
+  "section_title": "Erklärungen",
+  "sentences": [
+   "Bedarfsträger: Bedarfsträger können unterschiedliche Mandanten (Hosting-Szenarien), unterschiedliche Organisationseinheiten innerhalb eines Unternehmens oder einer Organisation oder unterschiedliche Verfahren sein.",
+   "data-at-rest: Daten auf der Speichereinheit.",
+   "data-in-motion: Daten auf dem Transportweg."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 10 Erklärungen (Teil 2)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "10",
+  "section_title": "Erklärungen",
+  "sentences": [
+   "Gastwerkzeuge: Gastwerkzeuge bestehen in der Regel aus Dienstprogrammen und Gerätetreibern und umfassen aus Sicherheitssicht kritische Funktionen wie eine Zwischenablage zwischen VMs oder VM und Host sowie Funktionen zur Grafikbeschleunigung.",
+   "RBAC: Role-based Access Control.",
+   "VLAN-Trunk: Die Stelle, ab der VLANs gebündelt weitergeleitet bzw. aufgeteilt werden."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 10 Erklärungen (Teil 3)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "10",
+  "section_title": "Erklärungen",
+  "sentences": [
+   "Jump Host: Gehärteter Host mit Zugriffskontrolle, der als Proxy zum gesicherten Verbindungsaufbau in eine Schutzzone verwendet wird.",
+   "LUN: Logical Unit Number, Adressierung eines logischen Bereichs eines Massenspeichers.",
+   "LUN-Binding: LUN-Binding ordnet die jeweiligen LUNs einer RAID-Gruppe oder einem Festplattenpool zu."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 10 Erklärungen (Teil 4)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "10",
+  "section_title": "Erklärungen",
+  "sentences": [
+   "LUN-Masking: Bei LUN-Masking werden Zugriffstabellen auf dem Plattensubsystem definiert, in denen die eindeutigen WWN-Adressen der zugriffsberechtigten Server registriert sind; alle anderen (maskierten) Platten sind für den Server unsichtbar.",
+   "Management-Umgebung: Software, die die Virtualisierungsumgebung sowie die VMs verwaltet.",
+   "Mandant: Ein Mandant stellt datentechnisch und organisatorisch eine abgeschlossene Einheit eines IT-Systems dar und strukturiert somit die Nutzung des Systems; jeder Mandant kann nur seine Daten sehen und ändern."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 10 Erklärungen (Teil 5)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "10",
+  "section_title": "Erklärungen",
+  "sentences": [
+   "Nord-Süd-Verkehr: Klassischer hierarchischer Netzverkehr.",
+   "Ost-West-Verkehr: Netzverkehr zwischen virtuellen Maschinen sowie zwischen Virtualisierungsumgebungen für Techniken wie Live Migration.",
+   "Soft-Zoning: Beim Soft-Zoning werden durch die Gruppierung der eindeutigen Bezeichner der SAN-Geräte Zonen gebildet; diese Zonen werden in Abgrenzung zum Zonenkonzept Speicherzone genannt."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 10 Erklärungen (Teil 6)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "10",
+  "section_title": "Erklärungen",
+  "sentences": [
+   "Switch: Physischer Switch.",
+   "Virtueller Switch: Switch aus Software, z. B. bei VMware als separate Objekte im Speicher des Hypervisors realisiert.",
+   "VM: Virtuelle Maschine."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 10 Erklärungen (Teil 7)",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "10",
+  "section_title": "Erklärungen",
+  "sentences": [
+   "VSAN (virtuelles SAN): Analog zur Segmentierung von LANs in virtuelle Teilnetze (VLANs) ist auch die Segmentierung eines SANs in VSANs möglich.",
+   "WWN: World Wide Name, hier ist der Name eines SAN-Geräts gemeint und entspricht ungefähr einer MAC-Adresse im Ethernet.",
+   "Zone / Zonenkonzept: Das Zonenkonzept beschreibt die Zonen einer IT-Infrastruktur; eine Zone ergibt sich aus dem Schutzbedarf und der Art der verarbeiteten Daten und entspricht meist bestimmten Netzsegmenten, die einzelnen Zonen selbst sind durch Paketfilter voneinander getrennt und Bestandteil des Zonenkonzepts ist eine Kommunikationsmatrix mit den erlaubten zonenübergreifenden Verbindungen."
+  ]
+ },
+ {
+  "title": "BSI-CS 113 – 11 Literaturverzeichnis",
+  "doc_id": "BSI-CS 113",
+  "doc_title": "Server-Virtualisierung",
+  "section": "11",
+  "section_title": "Literaturverzeichnis",
+  "sentences": [
+   "IT-GS 200-2: BSI, BSI-Standard 200-2, https://www.bsi.bund.de/dok/10027850 IT-GS:",
+   "BSI, IT-Grundschutz, https://www.bsi.bund.de/grundschutz IT-GS SpL:",
+   "BSI, Baustein Speicherlösungen Cloud Storage SYS.1.8 https://www.bsi.bund.de/dok/10095764"
+  ]
+ }
+]
